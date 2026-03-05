@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- 🌸 EDITA EL TÍTULO -->
-  <title>Sofía & Alejandro – ¡Nos Casamos!</title>
-
-  <!-- Fuentes -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
-
-  <!-- Estilos -->
-  <style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!-- 🌸 EDITA EL TÍTULO -->
+<title>Sofía & Alejandro – ¡Nos Casamos!</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
+<!-- React desde CDN — no requiere instalación ni build -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+<style>
 /* ============================================================
-   estilos.css — Boda Sofía & Alejandro
-   ============================================================
-   COLORES — edita aquí para cambiar toda la paleta
+   🌸 COLORES — edita aquí para cambiar toda la paleta
    ============================================================ */
 :root {
   --beige:  #F5F0E8;
@@ -27,8 +25,6 @@
   --white:  #FFFFFF;
   --green:  #25D366;
 }
-
-/* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -38,439 +34,584 @@ body {
   font-weight: 300;
   overflow-x: hidden;
 }
-
-/* ── Fondo textura ── */
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0;
   background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
-  opacity: .25;
-  pointer-events: none;
+  opacity: .25; pointer-events: none;
 }
-.page { position: relative; z-index: 1; }
+#root { position: relative; z-index: 1; }
 
-/* ============================================================
-   HERO
-   ============================================================ */
+/* ── Hero ── */
 .hero {
   background: linear-gradient(180deg, #faf4ea 0%, #f0e6d2 100%);
-  text-align: center;
-  padding: 4rem 1.5rem 3rem;
-  position: relative;
-  overflow: hidden;
+  text-align: center; padding: 4rem 1.5rem 3rem;
+  position: relative; overflow: hidden;
   border-bottom: 1px solid var(--gold2);
 }
-
-/* Flores esquinas */
-.floral-svg {
-  position: absolute;
-  width: 180px; height: 180px;
-  opacity: .15;
-  pointer-events: none;
-}
+.floral-svg { position: absolute; width: 180px; height: 180px; opacity: .15; pointer-events: none; }
 .floral-svg.tl { top: -20px; left: -20px; }
 .floral-svg.tr { top: -20px; right: -20px; transform: scaleX(-1); }
 .floral-svg.bl { bottom: -20px; left: -20px; transform: scaleY(-1); }
 .floral-svg.br { bottom: -20px; right: -20px; transform: scale(-1); }
+.hero-pre { font-size: .68rem; letter-spacing: .4em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.hero-names { font-family: 'Great Vibes', cursive; font-size: clamp(4rem,16vw,8rem); color: var(--brown); line-height: 1.1; margin-bottom: .8rem; }
+.hero-divider { display: flex; align-items: center; justify-content: center; gap: .8rem; margin: 1rem auto; }
+.hero-divider::before, .hero-divider::after { content: ''; flex: 1; max-width: 100px; height: 1px; background: var(--gold2); }
+.hero-date { font-family: 'Playfair Display', serif; font-size: clamp(.9rem,2.5vw,1.2rem); color: var(--brown); letter-spacing: .08em; line-height: 2; }
 
-.hero-pre {
-  font-size: .68rem; letter-spacing: .4em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 1.5rem;
-}
-.hero-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(4rem, 16vw, 8rem);
-  color: var(--brown); line-height: 1.1; margin-bottom: .8rem;
-}
-.hero-divider {
-  display: flex; align-items: center; justify-content: center;
-  gap: .8rem; margin: 1rem auto;
-}
-.hero-divider::before, .hero-divider::after {
-  content: ''; flex: 1; max-width: 100px;
-  height: 1px; background: var(--gold2);
-}
-.hero-date {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(.9rem, 2.5vw, 1.2rem);
-  color: var(--brown); letter-spacing: .08em; line-height: 2;
-}
-
-/* ============================================================
-   COUNTDOWN
-   ============================================================ */
+/* ── Countdown ── */
 .countdown-wrap {
   background: linear-gradient(135deg, #2a1f15 0%, #3d2b1a 100%);
-  padding: 3rem 1.5rem; text-align: center;
-  position: relative; overflow: hidden;
+  padding: 3rem 1.5rem; text-align: center; position: relative; overflow: hidden;
 }
-.countdown-wrap::before {
-  content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(200,169,110,.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.cd-label {
-  font-size: .6rem; letter-spacing: .4em; text-transform: uppercase;
-  color: var(--gold2); margin-bottom: 1.5rem; position: relative;
-}
-.countdown {
-  display: flex; justify-content: center;
-  gap: clamp(.6rem, 4vw, 3rem); flex-wrap: wrap; position: relative;
-}
+.countdown-wrap::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(200,169,110,.08) 0%, transparent 70%); pointer-events: none; }
+.cd-label { font-size: .6rem; letter-spacing: .4em; text-transform: uppercase; color: var(--gold2); margin-bottom: 1.5rem; position: relative; }
+.countdown { display: flex; justify-content: center; gap: clamp(.6rem,4vw,3rem); flex-wrap: wrap; position: relative; }
 .c-unit { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
-.c-num {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 11vw, 6rem);
-  color: var(--white); line-height: 1;
-}
+.c-num { font-family: 'Playfair Display', serif; font-size: clamp(3rem,11vw,6rem); color: var(--white); line-height: 1; min-width: 2ch; }
 .c-label { font-size: .55rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
-.c-sep {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 8vw, 5rem);
-  color: var(--gold); opacity: .4;
-  align-self: center; padding-bottom: .8rem;
-}
+.c-sep { font-family: 'Playfair Display', serif; font-size: clamp(2rem,8vw,5rem); color: var(--gold); opacity: .4; align-self: center; padding-bottom: .8rem; }
 
-/* ============================================================
-   SECCIONES GENERALES
-   ============================================================ */
-.section {
-  max-width: 680px; margin: 0 auto;
-  padding: 3.5rem 1.5rem; text-align: center;
-  position: relative; z-index: 1;
-}
-.s-ornament {
-  font-size: .6rem; letter-spacing: .4em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: .6rem;
-}
-.s-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(2.8rem, 9vw, 4.5rem);
-  color: var(--brown); line-height: 1.2; margin-bottom: .3rem;
-}
-.s-divider {
-  display: flex; align-items: center; justify-content: center;
-  gap: .6rem; margin: 1rem auto 2rem;
-}
-.s-divider::before, .s-divider::after {
-  content: ''; flex: 1; max-width: 80px;
-  height: 1px; background: var(--gold2);
-}
+/* ── Secciones ── */
+.section { max-width: 680px; margin: 0 auto; padding: 3.5rem 1.5rem; text-align: center; }
+.s-ornament { font-size: .6rem; letter-spacing: .4em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+.s-title { font-family: 'Great Vibes', cursive; font-size: clamp(2.8rem,9vw,4.5rem); color: var(--brown); line-height: 1.2; margin-bottom: .3rem; }
+.s-divider { display: flex; align-items: center; justify-content: center; gap: .6rem; margin: 1rem auto 2rem; }
+.s-divider::before, .s-divider::after { content: ''; flex: 1; max-width: 80px; height: 1px; background: var(--gold2); }
 .s-divider span { color: var(--gold); font-size: .9rem; }
-.s-text {
-  font-size: .93rem; line-height: 2;
-  color: var(--gray); max-width: 520px; margin: 0 auto;
-}
-.gold-line {
-  width: 100%; max-width: 680px; margin: 0 auto; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold2), var(--gold), var(--gold2), transparent);
-  position: relative; z-index: 1;
-}
+.s-text { font-size: .93rem; line-height: 2; color: var(--gray); max-width: 520px; margin: 0 auto; }
+.gold-line { width: 100%; max-width: 680px; margin: 0 auto; height: 2px; background: linear-gradient(90deg, transparent, var(--gold2), var(--gold), var(--gold2), transparent); }
 
-/* ============================================================
-   FOTO PAREJA
-   ============================================================ */
-.foto-pareja {
-  width: 100%; max-width: 500px;
-  border-radius: 4px; margin: 0 auto 1rem; display: block;
-  box-shadow: 0 8px 40px rgba(107,76,59,.2);
-  border: 5px solid var(--white); outline: 1px solid var(--gold2);
-}
+/* ── Foto pareja ── */
+.foto-pareja { width: 100%; max-width: 500px; border-radius: 4px; margin: 0 auto 1rem; display: block; box-shadow: 0 8px 40px rgba(107,76,59,.2); border: 5px solid var(--white); outline: 1px solid var(--gold2); }
 
-/* ============================================================
-   ITINERARIO
-   ============================================================ */
-.itinerario-img {
-  width: 100%; max-width: 360px;
-  margin: 0 auto; display: block;
-  border-radius: 4px;
-  box-shadow: 0 4px 20px rgba(107,76,59,.15);
-  border: 3px solid var(--white); outline: 1px solid var(--gold2);
-}
+/* ── Itinerario ── */
+.itinerario-img { width: 100%; max-width: 360px; margin: 0 auto; display: block; border-radius: 4px; box-shadow: 0 4px 20px rgba(107,76,59,.15); border: 3px solid var(--white); outline: 1px solid var(--gold2); }
 
-/* ============================================================
-   LUGARES (Ceremonia & Recepción)
-   ============================================================ */
-.lugares-wrap {
-  background: linear-gradient(180deg, var(--beige2), var(--beige));
-  position: relative; z-index: 1;
-}
-.lugar-bloque {
-  max-width: 480px; margin: 0 auto;
-  padding: 3rem 1.5rem; text-align: center;
-}
-.lugar-bloque + .lugar-bloque { border-top: 1px solid var(--gold2); }
-.lugar-icon-img {
-  width: 72px; height: 72px; object-fit: contain;
-  margin: 0 auto 1rem; display: block;
-  filter: sepia(.5) saturate(.6);
-}
-.lugar-titulo {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(2.2rem, 7vw, 3.5rem);
-  color: var(--brown); margin-bottom: .3rem;
-}
+/* ── Lugares ── */
+.lugares-wrap { background: linear-gradient(180deg, var(--beige2), var(--beige)); }
+.lugar-bloque { max-width: 480px; margin: 0 auto; padding: 3rem 1.5rem; text-align: center; border-bottom: 1px solid var(--gold2); }
+.lugar-icon-img { width: 72px; height: 72px; object-fit: contain; margin: 0 auto 1rem; display: block; filter: sepia(.5) saturate(.6); }
+.lugar-titulo { font-family: 'Great Vibes', cursive; font-size: clamp(2.2rem,7vw,3.5rem); color: var(--brown); margin-bottom: .3rem; }
 .lugar-info { font-size: .9rem; color: var(--gray); line-height: 2; margin-bottom: 1.3rem; }
-.btn-maps {
-  display: inline-block; padding: .7rem 2.2rem;
-  background: var(--brown); color: var(--white);
-  font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
-  text-decoration: none; border-radius: 30px;
-  transition: background .2s, transform .15s;
-}
-.btn-maps:hover { background: var(--dark); transform: translateY(-1px); }
+.btn-maps { display: inline-block; padding: .7rem 2.2rem; background: var(--brown); color: var(--white); font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; border-radius: 30px; transition: background .2s; }
+.btn-maps:hover { background: var(--dark); }
 .btn-maps.sm { padding: .45rem 1.2rem; font-size: .58rem; }
 
-/* ============================================================
-   VERSÍCULO
-   ============================================================ */
-.versiculo-wrap {
-  background: linear-gradient(135deg, #2a1f15, #3d2b1a);
-  padding: 3.5rem 1.5rem; text-align: center;
-  position: relative; z-index: 1; overflow: hidden;
-}
-.versiculo-wrap::before {
-  content: '\201C'; position: absolute; top: -2rem; left: 50%; transform: translateX(-50%);
-  font-family: 'Great Vibes', cursive; font-size: 14rem;
-  color: rgba(200,169,110,.07); pointer-events: none;
-}
-.versiculo-lines {
-  width: 180px; height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(200,169,110,.4), transparent);
-  margin: 0 auto 1.5rem;
-}
-.versiculo-text {
-  font-family: 'Playfair Display', serif; font-style: italic;
-  font-size: clamp(.93rem, 2.5vw, 1.1rem);
-  color: rgba(255,255,255,.82); line-height: 2;
-  max-width: 500px; margin: 0 auto 1rem; position: relative;
-}
+/* ── Versículo ── */
+.versiculo-wrap { background: linear-gradient(135deg, #2a1f15, #3d2b1a); padding: 3.5rem 1.5rem; text-align: center; position: relative; overflow: hidden; }
+.versiculo-wrap::before { content: '\201C'; position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); font-family: 'Great Vibes', cursive; font-size: 14rem; color: rgba(200,169,110,.07); pointer-events: none; }
+.versiculo-lines { width: 180px; height: 2px; background: linear-gradient(90deg, transparent, rgba(200,169,110,.4), transparent); margin: 0 auto 1.5rem; }
+.versiculo-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(.93rem,2.5vw,1.1rem); color: rgba(255,255,255,.82); line-height: 2; max-width: 500px; margin: 0 auto 1rem; position: relative; }
 .versiculo-ref { font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
 
-/* ============================================================
-   GALERÍA DE FOTOS
-   ============================================================ */
-.galeria-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 5px; max-width: 680px; margin: 0 auto;
-  position: relative; z-index: 1;
-}
+/* ── Galería ── */
+.galeria-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 5px; max-width: 680px; margin: 0 auto; }
 .galeria-item { aspect-ratio: 1/1; overflow: hidden; cursor: pointer; background: var(--beige2); }
 .galeria-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
 .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; display: block; }
 .galeria-item:hover img { transform: scale(1.06); }
-
-/* Lightbox */
-.lb {
-  display: none; position: fixed; inset: 0; z-index: 999;
-  background: rgba(0,0,0,.93);
-  align-items: center; justify-content: center;
-}
+.lb { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,.93); align-items: center; justify-content: center; }
 .lb.open { display: flex; }
 .lb img { max-width: 96%; max-height: 92svh; object-fit: contain; }
-.lb-close {
-  position: absolute; top: 1rem; right: 1.2rem;
-  color: var(--gold); font-size: 2.2rem; cursor: pointer;
-  background: none; border: none;
-}
+.lb-close { position: absolute; top: 1rem; right: 1.2rem; color: var(--gold); font-size: 2.2rem; cursor: pointer; background: none; border: none; }
 
-/* ============================================================
-   NUESTRA FIESTA
-   ============================================================ */
-.fiesta-wrap { background: var(--beige2); position: relative; z-index: 1; }
-.fiesta-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 0; max-width: 680px; margin: 0 auto;
-}
-@media (max-width: 480px) { .fiesta-grid { grid-template-columns: 1fr; } }
+/* ── Fiesta ── */
+.fiesta-wrap { background: var(--beige2); }
+.fiesta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 680px; margin: 0 auto; }
+@media(max-width:480px){.fiesta-grid{grid-template-columns:1fr;}}
 .fiesta-item { padding: 2.5rem 1.3rem; text-align: center; border: 1px solid rgba(200,169,110,.2); }
 .fiesta-icon { width: 65px; height: 65px; object-fit: contain; margin: 0 auto .8rem; display: block; filter: sepia(.4) saturate(.7); }
 .fiesta-titulo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: var(--brown); margin-bottom: .6rem; }
 .fiesta-texto { font-size: .82rem; color: var(--gray); line-height: 1.9; }
 .fiesta-hashtag { font-family: 'Great Vibes', cursive; font-size: 1.9rem; color: var(--brown); margin-top: .6rem; }
-.fiesta-btn {
-  display: inline-block; margin-top: .8rem; padding: .5rem 1.5rem;
-  border: 1px solid var(--brown); color: var(--brown);
-  font-size: .6rem; letter-spacing: .2em; text-transform: uppercase;
-  text-decoration: none; border-radius: 30px; transition: all .2s;
-}
+.fiesta-btn { display: inline-block; margin-top: .8rem; padding: .5rem 1.5rem; border: 1px solid var(--brown); color: var(--brown); font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; border-radius: 30px; transition: all .2s; }
 .fiesta-btn:hover { background: var(--brown); color: var(--white); }
 
-/* ============================================================
-   HASHTAG
-   ============================================================ */
-.hashtag-wrap {
-  background: linear-gradient(135deg, #2a1f15, #3d2b1a);
-  padding: 3rem 1.5rem; text-align: center;
-  position: relative; z-index: 1;
-}
+/* ── Hashtag ── */
+.hashtag-wrap { background: linear-gradient(135deg, #2a1f15, #3d2b1a); padding: 3rem 1.5rem; text-align: center; }
 .hashtag-label { font-size: .6rem; letter-spacing: .4em; text-transform: uppercase; color: var(--gold2); margin-bottom: .5rem; }
-.hashtag { font-family: 'Great Vibes', cursive; font-size: clamp(2.5rem, 10vw, 5rem); color: var(--gold); display: block; margin: .5rem 0; }
+.hashtag { font-family: 'Great Vibes', cursive; font-size: clamp(2.5rem,10vw,5rem); color: var(--gold); display: block; margin: .5rem 0; }
 .hashtag-sub { font-size: .8rem; color: rgba(255,255,255,.5); line-height: 1.9; max-width: 380px; margin: 0 auto; }
 
-/* ============================================================
-   RECOMENDACIONES
-   ============================================================ */
-.reco-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1rem; max-width: 600px; margin: 0 auto;
-}
-@media (max-width: 460px) { .reco-grid { grid-template-columns: 1fr; } }
+/* ── Recomendaciones ── */
+.reco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 600px; margin: 0 auto; }
+@media(max-width:460px){.reco-grid{grid-template-columns:1fr;}}
 .reco-card { background: var(--white); border: 1px solid var(--gold2); border-radius: 4px; padding: 2rem 1.2rem; text-align: center; }
 .reco-icon { width: 58px; height: 58px; object-fit: contain; margin: 0 auto .8rem; display: block; filter: sepia(.3) saturate(.8); }
 .reco-titulo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--brown); margin-bottom: .5rem; }
 .reco-texto { font-size: .8rem; color: var(--gray); line-height: 1.85; }
 
-/* ============================================================
-   HOTELES
-   ============================================================ */
-.hoteles-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem; max-width: 680px; margin: 0 auto;
-}
+/* ── Hoteles ── */
+.hoteles-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 1rem; max-width: 680px; margin: 0 auto; }
 .hotel-card { background: var(--white); border: 1px solid var(--gold2); border-radius: 4px; overflow: hidden; text-align: center; }
 .hotel-img { width: 100%; height: 130px; object-fit: cover; display: block; }
 .hotel-body { padding: 1rem; }
 .hotel-name { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--brown); margin-bottom: .3rem; }
 .hotel-info { font-size: .75rem; color: var(--gray); line-height: 1.7; margin-bottom: .8rem; }
 
-/* ============================================================
-   CONFIRMAR ASISTENCIA
-   ============================================================ */
-.confirm-wrap {
-  background: linear-gradient(135deg, #2a1f15, #3d2b1a);
-  padding: 4.5rem 1.5rem; text-align: center;
-  position: relative; z-index: 1;
-}
-.confirm-title { font-family: 'Great Vibes', cursive; font-size: clamp(2.5rem, 9vw, 5rem); color: var(--gold2); margin-bottom: .5rem; }
+/* ── Confirmar ── */
+.confirm-wrap { background: linear-gradient(135deg, #2a1f15, #3d2b1a); padding: 4.5rem 1.5rem; text-align: center; }
+.confirm-title { font-family: 'Great Vibes', cursive; font-size: clamp(2.5rem,9vw,5rem); color: var(--gold2); margin-bottom: .5rem; }
 .confirm-label { font-size: .6rem; letter-spacing: .4em; text-transform: uppercase; color: var(--gold2); margin-bottom: .5rem; }
-.confirm-deadline {
-  display: inline-block; border: 1px solid var(--gold); color: var(--gold);
-  font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
-  padding: .5rem 1.8rem; border-radius: 30px; margin-bottom: 1.5rem;
-}
+.confirm-deadline { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; padding: .5rem 1.8rem; border-radius: 30px; margin-bottom: 1.5rem; }
 .confirm-text { font-size: .88rem; color: rgba(255,255,255,.6); line-height: 1.9; max-width: 420px; margin: 0 auto 2rem; }
-.btn-wa {
-  display: inline-flex; align-items: center; gap: .7rem;
-  background: var(--green); color: var(--white);
-  padding: 1rem 2.5rem; border-radius: 30px;
-  font-size: .75rem; letter-spacing: .15em; text-transform: uppercase;
-  text-decoration: none; font-weight: 400;
-  transition: transform .2s, opacity .2s;
-  box-shadow: 0 4px 20px rgba(37,211,102,.3);
-}
+.btn-wa { display: inline-flex; align-items: center; gap: .7rem; background: var(--green); color: var(--white); padding: 1rem 2.5rem; border-radius: 30px; font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; font-weight: 400; transition: transform .2s, opacity .2s; box-shadow: 0 4px 20px rgba(37,211,102,.3); }
 .btn-wa:hover { transform: translateY(-2px); opacity: .93; }
 .btn-wa svg { width: 20px; height: 20px; fill: currentColor; }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer {
-  background: #1a1208; padding: 2rem 1rem;
-  text-align: center; position: relative; z-index: 1;
-}
+/* ── Footer ── */
+footer { background: #1a1208; padding: 2rem 1rem; text-align: center; }
 footer p { font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(200,169,110,.3); }
 footer a { color: rgba(200,169,110,.3); text-decoration: none; }
 
-/* ============================================================
-   ANIMACIONES
-   ============================================================ */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+/* ── Animaciones ── */
+@keyframes fadeIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
 .fi { animation: fadeIn .9s ease both; }
-.d1 { animation-delay: .1s; }
-.d2 { animation-delay: .3s; }
-.d3 { animation-delay: .5s; }
-.d4 { animation-delay: .65s; }
-
-  </style>
+.d1{animation-delay:.1s} .d2{animation-delay:.3s} .d3{animation-delay:.5s} .d4{animation-delay:.65s}
+.reveal { opacity:0; transform:translateY(22px); transition:opacity .7s ease,transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+</style>
 </head>
 <body>
-<div class="page">
+<div id="root"></div>
 
-  <!-- ════════════════════════════════════════
-       SECCIÓN 1 — HERO
-       Edita: nombres, fecha, ciudad
-  ════════════════════════════════════════ -->
-  <div class="hero">
+<script type="text/babel">
 
-    <!-- Flores decorativas esquinas -->
-    <svg class="floral-svg tl" viewBox="0 0 200 200"><g fill="#C8A96E"><ellipse cx="30" cy="30" rx="25" ry="12" transform="rotate(-45 30 30)"/><ellipse cx="60" cy="15" rx="20" ry="9" transform="rotate(-20 60 15)"/><ellipse cx="15" cy="65" rx="20" ry="9" transform="rotate(-70 15 65)"/><ellipse cx="80" cy="50" rx="22" ry="10" transform="rotate(-10 80 50)"/><ellipse cx="45" cy="80" rx="20" ry="9" transform="rotate(-55 45 80)"/><circle cx="55" cy="45" r="5"/></g></svg>
-    <svg class="floral-svg tr" viewBox="0 0 200 200"><g fill="#C8A96E"><ellipse cx="30" cy="30" rx="25" ry="12" transform="rotate(-45 30 30)"/><ellipse cx="60" cy="15" rx="20" ry="9" transform="rotate(-20 60 15)"/><ellipse cx="15" cy="65" rx="20" ry="9" transform="rotate(-70 15 65)"/><ellipse cx="80" cy="50" rx="22" ry="10" transform="rotate(-10 80 50)"/><circle cx="55" cy="45" r="5"/></g></svg>
-    <svg class="floral-svg bl" viewBox="0 0 200 200"><g fill="#C8A96E"><ellipse cx="30" cy="30" rx="25" ry="12" transform="rotate(-45 30 30)"/><ellipse cx="60" cy="15" rx="20" ry="9" transform="rotate(-20 60 15)"/><ellipse cx="15" cy="65" rx="20" ry="9" transform="rotate(-70 15 65)"/></g></svg>
-    <svg class="floral-svg br" viewBox="0 0 200 200"><g fill="#C8A96E"><ellipse cx="30" cy="30" rx="25" ry="12" transform="rotate(-45 30 30)"/><ellipse cx="60" cy="15" rx="20" ry="9" transform="rotate(-20 60 15)"/></g></svg>
+/* ============================================================
+   🌸 CONFIGURACIÓN — EDITA AQUÍ TODOS LOS DATOS
+   ============================================================ */
+const CONFIG = {
+  // Nombres
+  nombre1: "Sofía",
+  nombre2: "Alejandro",
 
-    <p class="hero-pre fi d1">Con la bendición de Dios y nuestras familias</p>
+  // Fecha de la boda (AÑO, MES-1, DÍA, HORA, MINUTOS)
+  // Mes: Enero=0, Feb=1, Mar=2, Abr=3, May=4, Jun=5, Jul=6...
+  fechaBoda: new Date(2026, 5, 27, 14, 0, 0),
 
-    <!-- 🌸 EDITA LOS NOMBRES -->
-    <div class="hero-names fi d2">Sofía & Alejandro</div>
+  // Texto fecha visible
+  fechaTexto: "Sábado · 27 de Junio de 2026",
+  ciudad: "Ciudad de México",
 
-    <div class="hero-divider fi d3"><span style="color:var(--gold)">✦</span></div>
+  // Mensaje principal
+  mensaje: "El destino nos presentó, y desde entonces caminamos juntos. Dios ha estado presente en nuestra relación, guiando nuestros pasos. Hemos aprendido a permanecer unidos con una misma visión, propósito y amor. Ahora daremos nuestro \"sí\" más importante, y queremos compartirlo con quienes han sido testigos y cómplices de nuestra historia.",
 
-    <!-- 🌸 EDITA FECHA Y CIUDAD -->
-    <div class="hero-date fi d4">
-      Sábado · 14 de Junio de 2025<br>
-      <span style="font-size:.85em; color:var(--gold);">Ciudad de México</span>
+  // Versículo
+  versiculo: "\"Y nosotros hemos conocido y creído el amor que Dios tiene para con nosotros. Dios es amor; y el que permanece en amor, permanece en Dios, y Dios en él.\"",
+  versiculoRef: "1 Juan 4:16",
+
+  // 🌸 FOTO PAREJA — reemplaza con tu link de Google Drive
+  // Formato: https://drive.google.com/uc?export=view&id=TU_ID
+  fotoPareja: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=700&q=85",
+
+  // 🌸 ITINERARIO — reemplaza con tu imagen de Canva
+  fotoItinerario: "https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80",
+
+  // Ceremonia
+  iglesiaName: "Parroquia de San Francisco",
+  iglesiaDir: "Av. Insurgentes Sur 123, Ciudad de México",
+  iglesiaHora: "4:00 PM",
+  iglesiaMap: "https://maps.google.com",
+
+  // Recepción
+  salonName: "Hacienda Los Olivos",
+  salonDir: "Km 12, Carretera Picacho, Ciudad de México",
+  salonHora: "7:00 PM",
+  salonMap: "https://maps.google.com",
+
+  // 🌸 GALERÍA — reemplaza con tus links de Google Drive
+  fotos: [
+    { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=700&q=80", wide: true },
+    { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&q=80" },
+    { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80" },
+    { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=80" },
+    { src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=400&q=80" },
+    { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400&q=80" },
+  ],
+
+  // Hashtag
+  hashtag: "#SofíaYAlejandro",
+
+  // Dress code
+  dressMujeres: "Vestido largo de un solo tono (No estampados). Se reserva el color blanco.",
+  dressHombres: "Traje formal · Corbatín",
+
+  // 🌸 Spotify — reemplaza con tu playlist
+  spotifyUrl: "https://open.spotify.com",
+
+  // Fecha límite confirmación
+  fechaLimite: "Antes del 31 de Mayo de 2026",
+
+  // 🌸 WhatsApp — reemplaza con tu número (con código de país, sin + ni espacios)
+  whatsapp: "5215500000000",
+  whatsappMsg: "Hola! Confirmo mi asistencia a la boda 🎉",
+
+  // 🌸 Hoteles — reemplaza fotos y links
+  hoteles: [
+    { name: "Hotel Marquis", info: "★★★★★ · A 5 min del salón", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80", map: "https://maps.google.com" },
+    { name: "Camino Real",   info: "★★★★ · A 10 min del salón", img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&q=80", map: "https://maps.google.com" },
+    { name: "Hotel Misión",  info: "★★★ · Opción económica",    img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80", map: "https://maps.google.com" },
+  ],
+
+  // Recomendaciones
+  recomendaciones: [
+    { icon: "https://cdn-icons-png.flaticon.com/512/1047/1047349.png", titulo: "Niños: Dulces Sueños", texto: "Amamos a los niños, pero esta celebración es solo para adultos. 🥂" },
+    { icon: "https://cdn-icons-png.flaticon.com/512/2933/2933245.png", titulo: "Puntualidad", texto: "Por favor llegar 15 minutos antes de la ceremonia. ⏰" },
+    { icon: "https://cdn-icons-png.flaticon.com/512/3063/3063822.png", titulo: "Momento Especial", texto: "Durante la ceremonia guardemos los celulares y vivamos el momento. 🤍" },
+    { icon: "https://cdn-icons-png.flaticon.com/512/1048/1048313.png", titulo: "Estacionamiento", texto: "Hay estacionamiento disponible en el lugar. 🚗" },
+  ],
+};
+
+/* ============================================================
+   COMPONENTES REACT
+   ============================================================ */
+
+// SVG floral decorativo
+const FloralSVG = ({ className }) => (
+  <svg className={`floral-svg ${className}`} viewBox="0 0 200 200">
+    <g fill="#C8A96E">
+      <ellipse cx="30" cy="30" rx="25" ry="12" transform="rotate(-45 30 30)"/>
+      <ellipse cx="60" cy="15" rx="20" ry="9" transform="rotate(-20 60 15)"/>
+      <ellipse cx="15" cy="65" rx="20" ry="9" transform="rotate(-70 15 65)"/>
+      <ellipse cx="80" cy="50" rx="22" ry="10" transform="rotate(-10 80 50)"/>
+      <ellipse cx="45" cy="80" rx="20" ry="9" transform="rotate(-55 45 80)"/>
+      <circle cx="55" cy="45" r="5"/>
+    </g>
+  </svg>
+);
+
+// Separador dorado
+const GoldLine = () => <div className="gold-line"></div>;
+
+// ── HERO ──
+const Hero = () => (
+  <div className="hero">
+    <FloralSVG className="tl"/>
+    <FloralSVG className="tr"/>
+    <FloralSVG className="bl"/>
+    <FloralSVG className="br"/>
+    <p className="hero-pre fi d1">Con la bendición de Dios y nuestras familias</p>
+    <div className="hero-names fi d2">{CONFIG.nombre1} & {CONFIG.nombre2}</div>
+    <div className="hero-divider fi d3"><span style={{color:'var(--gold)'}}>✦</span></div>
+    <div className="hero-date fi d4">
+      {CONFIG.fechaTexto}<br/>
+      <span style={{fontSize:'.85em', color:'var(--gold)'}}>{CONFIG.ciudad}</span>
     </div>
+  </div>
+);
 
-  </div><!-- /hero -->
+// ── COUNTDOWN ──
+const Countdown = () => {
+  const pad = n => String(n).padStart(2,'0');
 
+  const calcular = () => {
+    const diff = CONFIG.fechaBoda - new Date();
+    if (diff <= 0) return { d:'00', h:'00', m:'00', s:'00' };
+    return {
+      d: pad(Math.floor(diff / 86400000)),
+      h: pad(Math.floor((diff % 86400000) / 3600000)),
+      m: pad(Math.floor((diff % 3600000) / 60000)),
+      s: pad(Math.floor((diff % 60000) / 1000)),
+    };
+  };
 
-  <!-- ════════════════════════════════════════
-       SECCIÓN 2 — COUNTDOWN
-       La fecha se edita en script.js
-  ════════════════════════════════════════ -->
-  <div class="countdown-wrap">
-    <p class="cd-label">Faltan</p>
-    <div class="countdown">
-      <div class="c-unit"><span class="c-num" id="days">00</span><span class="c-label">Días</span></div>
-      <div class="c-sep">:</div>
-      <div class="c-unit"><span class="c-num" id="hours">00</span><span class="c-label">Horas</span></div>
-      <div class="c-sep">:</div>
-      <div class="c-unit"><span class="c-num" id="minutes">00</span><span class="c-label">Minutos</span></div>
-      <div class="c-sep">:</div>
-      <div class="c-unit"><span class="c-num" id="seconds">00</span><span class="c-label">Segundos</span></div>
+  const [tiempo, setTiempo] = React.useState(calcular);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => setTiempo(calcular()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="countdown-wrap">
+      <p className="cd-label">Faltan</p>
+      <div className="countdown">
+        <div className="c-unit"><span className="c-num">{tiempo.d}</span><span className="c-label">Días</span></div>
+        <div className="c-sep">:</div>
+        <div className="c-unit"><span className="c-num">{tiempo.h}</span><span className="c-label">Horas</span></div>
+        <div className="c-sep">:</div>
+        <div className="c-unit"><span className="c-num">{tiempo.m}</span><span className="c-label">Minutos</span></div>
+        <div className="c-sep">:</div>
+        <div className="c-unit"><span className="c-num">{tiempo.s}</span><span className="c-label">Segundos</span></div>
+      </div>
     </div>
-  </div><!-- /countdown -->
+  );
+};
 
+// ── MENSAJE ──
+const Mensaje = () => (
+  <div className="section reveal">
+    <p className="s-ornament">✦ &nbsp; ✦</p>
+    <h1 className="s-title">¡Nos Casamos!</h1>
+    <div className="s-divider"><span>🌸</span></div>
+    <p className="s-text">{CONFIG.mensaje}</p>
+  </div>
+);
 
-  <!-- ════════════════════════════════════════
-       SECCIÓN 3 — MENSAJE
-       Edita: texto del mensaje
-  ════════════════════════════════════════ -->
-  <div class="section reveal">
-    <p class="s-ornament">✦ &nbsp; ✦</p>
-    <h1 class="s-title">¡Nos Casamos!</h1>
-    <div class="s-divider"><span>🌸</span></div>
-    <!-- 🌸 EDITA EL MENSAJE -->
-    <p class="s-text">
-      El destino nos presentó, y desde entonces caminamos juntos. Dios ha estado presente en nuestra relación, guiando nuestros pasos. Hemos aprendido a permanecer unidos con una misma visión, propósito y amor. Ahora daremos nuestro "sí" más importante, y queremos compartirlo con quienes han sido testigos y cómplices de nuestra historia.
+// ── FOTO PAREJA ──
+const FotoPareja = () => (
+  <div className="section reveal" style={{padding:'2rem 1.5rem'}}>
+    <img className="foto-pareja" src={CONFIG.fotoPareja} alt={`${CONFIG.nombre1} y ${CONFIG.nombre2}`}/>
+  </div>
+);
+
+// ── ITINERARIO ──
+const Itinerario = () => (
+  <div className="section reveal">
+    <p className="s-ornament">✦ &nbsp; ✦</p>
+    <h2 className="s-title">Itinerario</h2>
+    <div className="s-divider"><span>🕊️</span></div>
+    <img className="itinerario-img" src={CONFIG.fotoItinerario} alt="Itinerario" style={{filter:'sepia(.2)'}}/>
+    <p style={{fontSize:'.68rem',color:'var(--gold)',marginTop:'.8rem',letterSpacing:'.12em'}}>
+      Reemplaza esta imagen con tu programa de Canva
     </p>
   </div>
+);
 
-  <div class="gold-line reveal"></div>
-
-
-  <!-- ════════════════════════════════════════
-       SECCIÓN 4 — FOTO DE LA PAREJA
-       Edita: reemplaza el src con tu link de Google Drive
-       Formato: https://drive.google.com/uc?export=view&id=TU_ID
-  ════════════════════════════════════════ -->
-  <div class="section reveal" style="padding:2rem 1.5rem;">
-    <!-- 🌸 REEMPLAZA EL LINK CON TU FOTO -->
-    <img class="foto-pareja"
-         src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=700&q=85"
-         alt="Sofía y Alejandro"/>
+// ── LUGARES ──
+const Lugares = () => (
+  <div className="lugares-wrap">
+    <div className="lugar-bloque reveal">
+      <p className="s-ornament">Ceremonia</p>
+      <div className="lugar-titulo">Ceremonia</div>
+      <div className="s-divider" style={{marginBottom:'1.5rem'}}><span>⛪</span></div>
+      <img className="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/1205/1205526.png" alt="Iglesia"/>
+      <div className="lugar-info">
+        <strong style={{color:'var(--brown)',fontSize:'1rem'}}>{CONFIG.iglesiaName}</strong><br/>
+        {CONFIG.iglesiaDir}<br/>
+        <strong style={{color:'var(--gold)'}}>{CONFIG.iglesiaHora}</strong>
+      </div>
+      <a className="btn-maps" href={CONFIG.iglesiaMap} target="_blank">📍 Cómo Llegar</a>
+    </div>
+    <div className="lugar-bloque reveal">
+      <p className="s-ornament">Recepción</p>
+      <div className="lugar-titulo">Recepción</div>
+      <div className="s-divider" style={{marginBottom:'1.5rem'}}><span>🥂</span></div>
+      <img className="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/3174/3174804.png" alt="Recepción"/>
+      <div className="lugar-info">
+        <strong style={{color:'var(--brown)',fontSize:'1rem'}}>{CONFIG.salonName}</strong><br/>
+        {CONFIG.salonDir}<br/>
+        <strong style={{color:'var(--gold)'}}>{CONFIG.salonHora}</strong>
+      </div>
+      <a className="btn-maps" href={CONFIG.salonMap} target="_blank">📍 Cómo Llegar</a>
+    </div>
   </div>
+);
 
-  <div class="gold-line reveal"></div>
+// ── GALERÍA ──
+const Galeria = () => {
+  const [lbSrc, setLbSrc] = React.useState(null);
 
+  React.useEffect(() => {
+    const handler = e => { if(e.key==='Escape') setLbSrc(null); };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, []);
 
-  <!-- ════════════════════════════════════════
-       SECCIÓN 5 — ITINERARIO
-       Edita: reemplaza la imagen con tu programa (Canva)
-       Formato: https://drive.google.com/uc?export=view&id=TU_ID
-  ════════════════════════════════════════ -->
-  <d
+  React.useEffect(() => {
+    document.body.style.overflow = lbSrc ? 'hidden' : '';
+  }, [lbSrc]);
+
+  return (
+    <>
+      <div className="section reveal" style={{paddingBottom:'1.5rem'}}>
+        <p className="s-ornament">✦ &nbsp; ✦</p>
+        <h2 className="s-title">Nuestro Amor</h2>
+        <div className="s-divider"><span>💕</span></div>
+      </div>
+
+      <div className="galeria-grid reveal">
+        {CONFIG.fotos.map((f, i) => (
+          <div key={i} className={`galeria-item${f.wide?' wide':''}`} onClick={() => setLbSrc(f.src)}>
+            <img src={f.src} alt={`Foto ${i+1}`}/>
+          </div>
+        ))}
+      </div>
+
+      {lbSrc && (
+        <div className="lb open" onClick={() => setLbSrc(null)}>
+          <button className="lb-close">✕</button>
+          <img src={lbSrc} alt="Foto ampliada"/>
+        </div>
+      )}
+    </>
+  );
+};
+
+// ── VERSÍCULO ──
+const Versiculo = () => (
+  <div className="versiculo-wrap reveal">
+    <div className="versiculo-lines"></div>
+    <p className="versiculo-text">{CONFIG.versiculo}</p>
+    <p className="versiculo-ref">{CONFIG.versiculoRef}</p>
+    <div className="versiculo-lines" style={{marginTop:'1.5rem'}}></div>
+  </div>
+);
+
+// ── NUESTRA FIESTA ──
+const Fiesta = () => (
+  <>
+    <div className="section reveal" style={{paddingBottom:'1rem'}}>
+      <p className="s-ornament">✦ &nbsp; ✦</p>
+      <h2 className="s-title">Nuestra Fiesta</h2>
+      <div className="s-divider"><span>🎉</span></div>
+      <p className="s-text">Detalles para tener en cuenta el día de la boda.</p>
+    </div>
+    <div className="fiesta-wrap">
+      <div className="fiesta-grid reveal">
+        <div className="fiesta-item">
+          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Dress Code"/>
+          <div className="fiesta-titulo">Dress Code</div>
+          <div className="fiesta-texto">
+            <strong>MUJERES</strong><br/>{CONFIG.dressMujeres}<br/><br/>
+            <strong>HOMBRES</strong><br/>{CONFIG.dressHombres}
+          </div>
+        </div>
+        <div className="fiesta-item">
+          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Música"/>
+          <div className="fiesta-titulo">Música</div>
+          <div className="fiesta-texto">¡Ayúdanos para que nuestra boda sea inolvidable! Agrega la música que deseas escuchar.</div>
+          <a className="fiesta-btn" href={CONFIG.spotifyUrl} target="_blank">Playlist Music</a>
+        </div>
+        <div className="fiesta-item">
+          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/2917/2917988.png" alt="Regalos"/>
+          <div className="fiesta-titulo">Lluvia de Sobres</div>
+          <div className="fiesta-texto">Tu presencia es nuestro mejor regalo. Si deseas obsequiarnos algo, aceptamos sobres con mucho cariño. 💛</div>
+        </div>
+        <div className="fiesta-item">
+          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="Fotos"/>
+          <div className="fiesta-titulo">Comparte las Fotos</div>
+          <div className="fiesta-texto">Comparte las fotos de la boda usando nuestro hashtag</div>
+          <div className="fiesta-hashtag">{CONFIG.hashtag}</div>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
+// ── HASHTAG ──
+const Hashtag = () => (
+  <div className="hashtag-wrap reveal">
+    <p className="hashtag-label">Comparte el momento</p>
+    <span className="hashtag">{CONFIG.hashtag}</span>
+    <p className="hashtag-sub">Etiqueta tus fotos y videos para que podamos verlos todos 📸</p>
+  </div>
+);
+
+// ── RECOMENDACIONES ──
+const Recomendaciones = () => (
+  <>
+    <div className="section reveal">
+      <p className="s-ornament">✦ &nbsp; ✦</p>
+      <h2 className="s-title">Recomendaciones</h2>
+      <div className="s-divider"><span>✨</span></div>
+      <p className="s-text">¡Recomendaciones para tener en cuenta el día de la Boda!</p>
+    </div>
+    <div style={{maxWidth:'680px',margin:'0 auto',padding:'0 1.5rem 3.5rem'}} className="reveal">
+      <div className="reco-grid">
+        {CONFIG.recomendaciones.map((r,i) => (
+          <div key={i} className="reco-card">
+            <img className="reco-icon" src={r.icon} alt={r.titulo}/>
+            <div className="reco-titulo">{r.titulo}</div>
+            <div className="reco-texto">{r.texto}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </>
+);
+
+// ── HOTELES ──
+const Hoteles = () => (
+  <>
+    <div className="section reveal">
+      <p className="s-ornament">✦ &nbsp; ✦</p>
+      <h2 className="s-title">Hoteles</h2>
+      <div className="s-divider"><span>🏨</span></div>
+    </div>
+    <div style={{padding:'0 1.5rem 3.5rem'}} className="reveal">
+      <div className="hoteles-grid">
+        {CONFIG.hoteles.map((h,i) => (
+          <div key={i} className="hotel-card">
+            <img className="hotel-img" src={h.img} alt={h.name}/>
+            <div className="hotel-body">
+              <div className="hotel-name">{h.name}</div>
+              <div className="hotel-info">{h.info}</div>
+              <a className="btn-maps sm" href={h.map} target="_blank">Ver más</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </>
+);
+
+// ── CONFIRMAR ──
+const Confirmar = () => {
+  const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
+  return (
+    <div className="confirm-wrap reveal">
+      <p className="confirm-label">RSVP</p>
+      <div className="confirm-title">Confirmar Asistencia</div>
+      <div className="confirm-deadline">{CONFIG.fechaLimite}</div>
+      <p className="confirm-text">Para nosotros es muy importante que confirmes tu asistencia antes de la fecha indicada.</p>
+      <a className="btn-wa" href={url} target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Confirma Aquí
+      </a>
+    </div>
+  );
+};
+
+// ── FOOTER ──
+const Footer = () => (
+  <footer>
+    <p>Con amor · {CONFIG.nombre1} &amp; {CONFIG.nombre2} · 2026</p>
+  </footer>
+);
+
+// ── APP PRINCIPAL ──
+const App = () => {
+  // Scroll reveal
+  React.useEffect(() => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <>
+      <Hero/>
+      <Countdown/>
+      <Mensaje/>
+      <GoldLine/>
+      <FotoPareja/>
+      <GoldLine/>
+      <Itinerario/>
+      <GoldLine/>
+      <Lugares/>
+      <GoldLine/>
+      <Galeria/>
+      <Versiculo/>
+      <Fiesta/>
+      <Hashtag/>
+      <Recomendaciones/>
+      <GoldLine/>
+      <Hoteles/>
+      <GoldLine/>
+      <Confirmar/>
+      <Footer/>
+    </>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
