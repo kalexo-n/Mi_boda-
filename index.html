@@ -1,611 +1,450 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Boda – Confirmación de Asistencia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
-  <style>
-    /* ============================================================
-       🌸  EDITA AQUÍ LOS COLORES Y FUENTES  🌸
-    ============================================================ */
-    :root {
-      --cream:   #FAF6F0;
-      --blush:   #D4A5A0;
-      --sage:    #8A9E8A;
-      --gold:    #BFA27A;
-      --dark:    #3A2E2A;
-      --light:   #F0E8DF;
-      --border:  rgba(191,162,122,0.35);
-    }
+  <!-- 🌸 EDITA EL TÍTULO -->
+  <title>Sofía & Alejandro – ¡Nos Casamos!</title>
 
-    /* ============================================================
-       🌸  EDITA AQUÍ LOS DATOS DE LA BODA  🌸
-       Cambia la fecha en el JS más abajo (busca "FECHA_BODA")
-    ============================================================ */
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--cream);
-      color: var(--dark);
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── Fondo decorativo ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 10% 20%, rgba(212,165,160,.18) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 90% 80%, rgba(138,158,138,.15) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 30% at 50% 50%, rgba(191,162,122,.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .page { position: relative; z-index: 1; }
-
-    /* ── Hero ── */
-    .hero {
-      min-height: 100svh;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      text-align: center;
-      padding: 3rem 1.5rem;
-      gap: 1.2rem;
-    }
-
-    .ornament {
-      font-size: 1.4rem;
-      color: var(--gold);
-      letter-spacing: .4em;
-      opacity: .7;
-    }
-
-    .hero-sub {
-      font-family: 'Montserrat', sans-serif;
-      font-size: .72rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-      color: var(--sage);
-    }
-
-    /* ── EDITA LOS NOMBRES AQUÍ ── */
-    .names {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(3rem, 10vw, 6.5rem);
-      line-height: 1.05;
-      color: var(--dark);
-    }
-
-    .ampersand {
-      color: var(--blush);
-      font-size: clamp(3.5rem, 12vw, 8rem);
-      display: block;
-      line-height: .9;
-    }
-
-    .divider {
-      width: 80px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      margin: .5rem auto;
-    }
-
-    /* ── FECHA ── */
-    .date-block {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      letter-spacing: .15em;
-      color: var(--gold);
-    }
-    .date-block span { font-size: .85em; color: var(--blush); }
-
-    /* ── COUNTDOWN ── */
-    .countdown-section {
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
-
-    .countdown-label {
-      font-size: .68rem;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 1.8rem;
-    }
-
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: clamp(.8rem, 3vw, 2.5rem);
-      flex-wrap: wrap;
-    }
-
-    .unit {
-      display: flex; flex-direction: column; align-items: center;
-      gap: .3rem;
-    }
-
-    .unit-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 8vw, 5rem);
-      font-weight: 300;
-      line-height: 1;
-      color: var(--dark);
-      min-width: clamp(2.5rem, 7vw, 4.5rem);
-      position: relative;
-    }
-
-    .unit-number::after {
-      content: '';
-      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 30px; height: 1px;
-      background: var(--gold);
-    }
-
-    .unit-label {
-      font-size: .6rem;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: var(--blush);
-      padding-top: .5rem;
-    }
-
-    .colon {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      color: var(--gold);
-      opacity: .4;
-      align-self: flex-start;
-      padding-top: .2rem;
-    }
-
-    /* ── DETALLES ── */
-    .details-section {
-      padding: 2rem 1.5rem 3rem;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-
-    .details-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-
-    @media (max-width: 480px) { .details-grid { grid-template-columns: 1fr; } }
-
-    .detail-card {
-      background: rgba(255,255,255,.55);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 1.5rem;
-      text-align: center;
-      backdrop-filter: blur(6px);
-    }
-
-    .detail-icon { font-size: 1.4rem; margin-bottom: .6rem; }
-    .detail-title {
-      font-size: .6rem; letter-spacing: .25em;
-      text-transform: uppercase; color: var(--sage);
-      margin-bottom: .5rem;
-    }
-    .detail-main {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem; font-style: italic;
-      color: var(--dark); line-height: 1.4;
-    }
-    .detail-sub {
-      font-size: .72rem; color: var(--blush);
-      margin-top: .3rem; line-height: 1.4;
-    }
-
-    /* ── FORM ── */
-    .form-section {
-      padding: 1rem 1.5rem 4rem;
-      max-width: 540px;
-      margin: 0 auto;
-    }
-
-    .form-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      font-style: italic;
-      color: var(--dark);
-      text-align: center;
-      margin-bottom: .5rem;
-    }
-
-    .form-sub {
-      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--sage); text-align: center; margin-bottom: 2.5rem;
-    }
-
-    .field { margin-bottom: 1.4rem; }
-
-    label {
-      display: block;
-      font-size: .62rem; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--sage);
-      margin-bottom: .5rem;
-    }
-
-    input, select, textarea {
-      width: 100%;
-      background: rgba(255,255,255,.6);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: .85rem 1rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: .85rem; font-weight: 300;
-      color: var(--dark);
-      outline: none;
-      transition: border-color .25s, background .25s;
-      -webkit-appearance: none;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      border-color: var(--gold);
-      background: rgba(255,255,255,.85);
-    }
-
-    textarea { resize: vertical; min-height: 90px; }
-
-    .radio-group {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-    }
-
-    .radio-opt {
-      flex: 1; min-width: 120px;
-      position: relative;
-    }
-
-    .radio-opt input[type="radio"] {
-      position: absolute; opacity: 0; width: 0; height: 0;
-    }
-
-    .radio-opt label {
-      display: flex; align-items: center; justify-content: center;
-      gap: .5rem;
-      background: rgba(255,255,255,.55);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: .85rem 1rem;
-      cursor: pointer;
-      font-size: .72rem; letter-spacing: .18em;
-      transition: all .2s;
-      text-transform: uppercase;
-    }
-
-    .radio-opt input[type="radio"]:checked + label {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #fff;
-    }
-
-    .btn {
-      width: 100%;
-      background: linear-gradient(135deg, var(--dark) 0%, #5a4540 100%);
-      color: var(--cream);
-      border: none;
-      border-radius: 2px;
-      padding: 1.1rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: .7rem; letter-spacing: .3em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: opacity .25s, transform .15s;
-      margin-top: .5rem;
-    }
-
-    .btn:hover { opacity: .88; transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
-    .btn:disabled { opacity: .5; cursor: not-allowed; }
-
-    /* ── Mensajes ── */
-    .msg {
-      display: none;
-      padding: 1.2rem 1.5rem;
-      border-radius: 2px;
-      text-align: center;
-      font-size: .78rem;
-      letter-spacing: .08em;
-      margin-top: 1rem;
-    }
-    .msg.success {
-      background: rgba(138,158,138,.15);
-      border: 1px solid var(--sage);
-      color: var(--sage);
-    }
-    .msg.error {
-      background: rgba(212,165,160,.15);
-      border: 1px solid var(--blush);
-      color: #a06060;
-    }
-
-    /* ── Footer ── */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem 3rem;
-      font-size: .65rem; letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--blush);
-      opacity: .6;
-    }
-
-    /* ── Floral decoración ── */
-    .floral { color: var(--blush); opacity: .5; font-size: 1.2rem; }
-
-    /* ── Animaciones de entrada ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up { animation: fadeUp .9s ease both; }
-    .delay-1 { animation-delay: .15s; }
-    .delay-2 { animation-delay: .35s; }
-    .delay-3 { animation-delay: .55s; }
-    .delay-4 { animation-delay: .75s; }
-    .delay-5 { animation-delay: .95s; }
-  </style>
+  <!-- Estilos -->
+  <link rel="stylesheet" href="estilos.css"/>
 </head>
 <body>
 <div class="page">
 
-  <!-- ════════════════════ HERO ════════════════════ -->
-  <section class="hero">
-    <p class="ornament fade-up">✦ ✦ ✦</p>
-    <p class="hero-sub fade-up delay-1">Nos complace invitarles a nuestra boda</p>
+  <!-- ════════════════════════════════════════
+       SECCIÓN 1 — HERO
+       Edita: nombres, fecha, ciudad
+  ════════════════════════════════════════ -->
+  <div class="hero">
 
-    <!-- 🌸 EDITA LOS NOMBRES 🌸 -->
-    <div class="names fade-up delay-2">
-      Natalia
-      <span class="ampersand">&</span>
-      Jhon
+    <!-- Flores decorativas esquinas -->
+    <svg class="floral-svg tl" viewBox="0 0 200 200"><g fill="#C8A96E"><ellipse cx="30" cy="30" rx="25" ry="12" transform="rotate(-45 30 30)"/><ellipse cx="60" cy="15" rx="20" ry="9" transform="rotate(-20 60 15)"/><ellipse cx="15" cy="65" rx="20" ry="9" transform="rotate(-70 15 65)"/><ellipse cx="80" cy="50" rx="22" ry="10" transform="rotate(-10 80 50)"/><ellipse cx="45" cy="80" rx="20" ry="9" transform="rotate(-55 45 80)"/><circle cx="55" cy="45" r="5"/></g></svg>
+    <svg class="floral-svg tr" viewBox="0 0 200 200"><g fill="#C8A96E"><ellipse cx="30" cy="30" rx="25" ry="12" transform="rotate(-45 30 30)"/><ellipse cx="60" cy="15" rx="20" ry="9" transform="rotate(-20 60 15)"/><ellipse cx="15" cy="65" rx="20" ry="9" transform="rotate(-70 15 65)"/><ellipse cx="80" cy="50" rx="22" ry="10" transform="rotate(-10 80 50)"/><circle cx="55" cy="45" r="5"/></g></svg>
+    <svg class="floral-svg bl" viewBox="0 0 200 200"><g fill="#C8A96E"><ellipse cx="30" cy="30" rx="25" ry="12" transform="rotate(-45 30 30)"/><ellipse cx="60" cy="15" rx="20" ry="9" transform="rotate(-20 60 15)"/><ellipse cx="15" cy="65" rx="20" ry="9" transform="rotate(-70 15 65)"/></g></svg>
+    <svg class="floral-svg br" viewBox="0 0 200 200"><g fill="#C8A96E"><ellipse cx="30" cy="30" rx="25" ry="12" transform="rotate(-45 30 30)"/><ellipse cx="60" cy="15" rx="20" ry="9" transform="rotate(-20 60 15)"/></g></svg>
+
+    <p class="hero-pre fi d1">Con la bendición de Dios y nuestras familias</p>
+
+    <!-- 🌸 EDITA LOS NOMBRES -->
+    <div class="hero-names fi d2">Sofía & Alejandro</div>
+
+    <div class="hero-divider fi d3"><span style="color:var(--gold)">✦</span></div>
+
+    <!-- 🌸 EDITA FECHA Y CIUDAD -->
+    <div class="hero-date fi d4">
+      Sábado · 14 de Junio de 2025<br>
+      <span style="font-size:.85em; color:var(--gold);">Ciudad de México</span>
     </div>
 
-    <div class="divider fade-up delay-3"></div>
+  </div><!-- /hero -->
 
-    <!-- 🌸 EDITA LA FECHA AQUÍ 🌸 -->
-    <div class="date-block fade-up delay-4">
-      Sábado 27 de Junio 2026
-      <br><span>Barranquilla / Atlántico</span>
-    </div>
 
-    <p class="floral fade-up delay-5">❧</p>
-  </section>
-
-  <!-- ════════════════════ COUNTDOWN ════════════════════ -->
-  <section class="countdown-section">
-    <p class="countdown-label">Faltan</p>
+  <!-- ════════════════════════════════════════
+       SECCIÓN 2 — COUNTDOWN
+       La fecha se edita en script.js
+  ════════════════════════════════════════ -->
+  <div class="countdown-wrap">
+    <p class="cd-label">Faltan</p>
     <div class="countdown">
-      <div class="unit">
-        <span class="unit-number" id="days">00</span>
-        <span class="unit-label">Días</span>
-      </div>
-      <div class="colon">:</div>
-      <div class="unit">
-        <span class="unit-number" id="hours">00</span>
-        <span class="unit-label">Horas</span>
-      </div>
-      <div class="colon">:</div>
-      <div class="unit">
-        <span class="unit-number" id="minutes">00</span>
-        <span class="unit-label">Min</span>
-      </div>
-      <div class="colon">:</div>
-      <div class="unit">
-        <span class="unit-number" id="seconds">00</span>
-        <span class="unit-label">Seg</span>
-      </div>
+      <div class="c-unit"><span class="c-num" id="days">00</span><span class="c-label">Días</span></div>
+      <div class="c-sep">:</div>
+      <div class="c-unit"><span class="c-num" id="hours">00</span><span class="c-label">Horas</span></div>
+      <div class="c-sep">:</div>
+      <div class="c-unit"><span class="c-num" id="minutes">00</span><span class="c-label">Minutos</span></div>
+      <div class="c-sep">:</div>
+      <div class="c-unit"><span class="c-num" id="seconds">00</span><span class="c-label">Segundos</span></div>
     </div>
-  </section>
+  </div><!-- /countdown -->
 
-  <!-- ════════════════════ DETALLES ════════════════════ -->
-  <section class="details-section">
-    <div class="details-grid">
 
-      <!-- 🌸 EDITA CADA DETALLE AQUÍ 🌸 -->
-      <div class="detail-card">
-        <div class="detail-icon">⛪</div>
-        <div class="detail-title">Ceremonia</div>
-        <div class="detail-main">Parroquia de San Francisco</div>
-        <div class="detail-sub">4:00 PM<br>Av. Insurgentes Sur 123</div>
+  <!-- ════════════════════════════════════════
+       SECCIÓN 3 — MENSAJE
+       Edita: texto del mensaje
+  ════════════════════════════════════════ -->
+  <div class="section reveal">
+    <p class="s-ornament">✦ &nbsp; ✦</p>
+    <h1 class="s-title">¡Nos Casamos!</h1>
+    <div class="s-divider"><span>🌸</span></div>
+    <!-- 🌸 EDITA EL MENSAJE -->
+    <p class="s-text">
+      El destino nos presentó, y desde entonces caminamos juntos. Dios ha estado presente en nuestra relación, guiando nuestros pasos. Hemos aprendido a permanecer unidos con una misma visión, propósito y amor. Ahora daremos nuestro "sí" más importante, y queremos compartirlo con quienes han sido testigos y cómplices de nuestra historia.
+    </p>
+  </div>
+
+  <div class="gold-line reveal"></div>
+
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 4 — FOTO DE LA PAREJA
+       Edita: reemplaza el src con tu link de Google Drive
+       Formato: https://drive.google.com/uc?export=view&id=TU_ID
+  ════════════════════════════════════════ -->
+  <div class="section reveal" style="padding:2rem 1.5rem;">
+    <!-- 🌸 REEMPLAZA EL LINK CON TU FOTO -->
+    <img class="foto-pareja"
+         src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=700&q=85"
+         alt="Sofía y Alejandro"/>
+  </div>
+
+  <div class="gold-line reveal"></div>
+
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 5 — ITINERARIO
+       Edita: reemplaza la imagen con tu programa (Canva)
+       Formato: https://drive.google.com/uc?export=view&id=TU_ID
+  ════════════════════════════════════════ -->
+  <div class="section reveal">
+    <p class="s-ornament">✦ &nbsp; ✦</p>
+    <h2 class="s-title">Itinerario</h2>
+    <div class="s-divider"><span>🕊️</span></div>
+    <!-- 🌸 REEMPLAZA CON TU IMAGEN DE PROGRAMA (hazla en Canva) -->
+    <img class="itinerario-img"
+         src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80"
+         alt="Itinerario" style="filter:sepia(.2);"/>
+    <p style="font-size:.68rem;color:var(--gold);margin-top:.8rem;letter-spacing:.12em;">
+      Reemplaza esta imagen con tu programa de Canva
+    </p>
+  </div>
+
+  <div class="gold-line reveal"></div>
+
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 6 — CEREMONIA Y RECEPCIÓN
+       Edita: nombre, dirección, hora, link de Maps
+  ════════════════════════════════════════ -->
+  <div class="lugares-wrap">
+
+    <!-- Ceremonia -->
+    <div class="lugar-bloque reveal">
+      <p class="s-ornament">Ceremonia</p>
+      <div class="lugar-titulo">Ceremonia</div>
+      <div class="s-divider" style="margin-bottom:1.5rem;"><span>⛪</span></div>
+      <img class="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/1205/1205526.png" alt="Iglesia"/>
+      <!-- 🌸 EDITA NOMBRE, DIRECCIÓN Y HORA -->
+      <div class="lugar-info">
+        <strong style="color:var(--brown);font-size:1rem;">Parroquia de San Francisco</strong><br>
+        Av. Insurgentes Sur 123<br>
+        Ciudad de México<br>
+        <strong style="color:var(--gold);">4:00 PM</strong>
       </div>
+      <!-- 🌸 REEMPLAZA CON TU LINK DE GOOGLE MAPS -->
+      <a class="btn-maps" href="https://maps.google.com" target="_blank">📍 Cómo Llegar</a>
+    </div>
 
-      <div class="detail-card">
-        <div class="detail-icon">🥂</div>
-        <div class="detail-title">Recepción</div>
-        <div class="detail-main">Hacienda Los Olivos</div>
-        <div class="detail-sub">7:00 PM<br>Km 12, Carretera Picacho</div>
+    <!-- Recepción -->
+    <div class="lugar-bloque reveal">
+      <p class="s-ornament">Recepción</p>
+      <div class="lugar-titulo">Recepción</div>
+      <div class="s-divider" style="margin-bottom:1.5rem;"><span>🥂</span></div>
+      <img class="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/3174/3174804.png" alt="Recepción"/>
+      <!-- 🌸 EDITA NOMBRE, DIRECCIÓN Y HORA -->
+      <div class="lugar-info">
+        <strong style="color:var(--brown);font-size:1rem;">Hacienda Los Olivos</strong><br>
+        Km 12, Carretera Picacho<br>
+        Ciudad de México<br>
+        <strong style="color:var(--gold);">7:00 PM</strong>
       </div>
-
-      <div class="detail-card">
-        <div class="detail-icon">👗</div>
-        <div class="detail-title">Código de Vestimenta</div>
-        <div class="detail-main">Formal</div>
-        <div class="detail-sub">Evitar color blanco</div>
-      </div>
-
-      <div class="detail-card">
-        <div class="detail-icon">📅</div>
-        <div class="detail-title">Confirmar antes del</div>
-        <div class="detail-main">31 de Mayo, 2025</div>
-        <div class="detail-sub">Gracias por confirmar a tiempo</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ════════════════════ FORMULARIO ════════════════════ -->
-  <section class="form-section">
-    <h2 class="form-heading">Confirma tu asistencia</h2>
-    <p class="form-sub">Por favor completa el formulario</p>
-
-    <div class="field">
-      <label for="nombre">Nombre completo *</label>
-      <input type="text" id="nombre" placeholder="Tu nombre" required />
+      <!-- 🌸 REEMPLAZA CON TU LINK DE GOOGLE MAPS -->
+      <a class="btn-maps" href="https://maps.google.com" target="_blank">📍 Cómo Llegar</a>
     </div>
 
-    <div class="field">
-      <label for="email">Correo electrónico *</label>
-      <input type="email" id="email" placeholder="tu@correo.com" required />
+  </div><!-- /lugares -->
+
+  <div class="gold-line reveal"></div>
+
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 7 — GALERÍA DE FOTOS
+       Edita: reemplaza cada src con tu link de Google Drive
+       Formato: https://drive.google.com/uc?export=view&id=TU_ID
+       — La primera foto (wide) es más grande (ocupa 2 columnas)
+       — Agrega o quita bloques <div class="galeria-item"> según necesites
+  ════════════════════════════════════════ -->
+  <div class="section reveal" style="padding-bottom:1.5rem;">
+    <p class="s-ornament">✦ &nbsp; ✦</p>
+    <h2 class="s-title">Nuestro Amor</h2>
+    <div class="s-divider"><span>💕</span></div>
+  </div>
+
+  <div class="galeria-grid reveal">
+
+    <!-- Foto 1 — GRANDE (2 columnas) -->
+    <!-- 🌸 REEMPLAZA src -->
+    <div class="galeria-item wide" onclick="abrirFoto(this)">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=700&q=80" alt="Foto 1"/>
     </div>
 
-    <div class="field">
-      <label for="telefono">Teléfono (opcional)</label>
-      <input type="tel" id="telefono" placeholder="+52 55 1234 5678" />
+    <!-- Foto 2 -->
+    <!-- 🌸 REEMPLAZA src -->
+    <div class="galeria-item" onclick="abrirFoto(this)">
+      <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&q=80" alt="Foto 2"/>
     </div>
 
-    <div class="field">
-      <label>¿Asistirás? *</label>
-      <div class="radio-group">
-        <div class="radio-opt">
-          <input type="radio" name="asistencia" id="si" value="Sí asisto" checked />
-          <label for="si">🎉 Sí asisto</label>
+    <!-- Foto 3 -->
+    <!-- 🌸 REEMPLAZA src -->
+    <div class="galeria-item" onclick="abrirFoto(this)">
+      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80" alt="Foto 3"/>
+    </div>
+
+    <!-- Foto 4 -->
+    <!-- 🌸 REEMPLAZA src -->
+    <div class="galeria-item" onclick="abrirFoto(this)">
+      <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=80" alt="Foto 4"/>
+    </div>
+
+    <!-- Foto 5 -->
+    <!-- 🌸 REEMPLAZA src -->
+    <div class="galeria-item" onclick="abrirFoto(this)">
+      <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=400&q=80" alt="Foto 5"/>
+    </div>
+
+    <!-- Foto 6 -->
+    <!-- 🌸 REEMPLAZA src -->
+    <div class="galeria-item" onclick="abrirFoto(this)">
+      <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400&q=80" alt="Foto 6"/>
+    </div>
+
+  </div><!-- /galeria-grid -->
+
+  <!-- Lightbox (no editar) -->
+  <div class="lb" id="lb" onclick="cerrarFoto()">
+    <button class="lb-close">✕</button>
+    <img id="lb-img" src="" alt=""/>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 8 — VERSÍCULO / FRASE
+       Edita: texto y referencia bíblica
+  ════════════════════════════════════════ -->
+  <div class="versiculo-wrap reveal">
+    <div class="versiculo-lines"></div>
+    <!-- 🌸 EDITA EL VERSÍCULO -->
+    <p class="versiculo-text">
+      "Y nosotros hemos conocido y creído el amor que Dios tiene para con nosotros.
+      Dios es amor; y el que permanece en amor, permanece en Dios, y Dios en él."
+    </p>
+    <!-- 🌸 EDITA LA REFERENCIA -->
+    <p class="versiculo-ref">1 Juan 4:16</p>
+    <div class="versiculo-lines" style="margin-top:1.5rem;"></div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 9 — NUESTRA FIESTA
+       Edita: dress code, spotify, lluvia de sobres, hashtag
+  ════════════════════════════════════════ -->
+  <div class="section reveal" style="padding-bottom:1rem;">
+    <p class="s-ornament">✦ &nbsp; ✦</p>
+    <h2 class="s-title">Nuestra Fiesta</h2>
+    <div class="s-divider"><span>🎉</span></div>
+    <p class="s-text">Detalles para tener en cuenta el día de la boda.</p>
+  </div>
+
+  <div class="fiesta-wrap">
+    <div class="fiesta-grid reveal">
+
+      <!-- Dress Code -->
+      <div class="fiesta-item">
+        <img class="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Dress Code"/>
+        <div class="fiesta-titulo">Dress Code</div>
+        <!-- 🌸 EDITA VESTIMENTA -->
+        <div class="fiesta-texto">
+          <strong>MUJERES</strong><br>
+          Vestido largo de un solo tono<br>
+          (No estampados)<br>
+          Se reserva el color blanco<br><br>
+          <strong>HOMBRES</strong><br>
+          Traje formal · Corbatín
         </div>
-        <div class="radio-opt">
-          <input type="radio" name="asistencia" id="no" value="No puedo asistir" />
-          <label for="no">😔 No podré ir</label>
+      </div>
+
+      <!-- Música -->
+      <div class="fiesta-item">
+        <img class="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Música"/>
+        <div class="fiesta-titulo">Música</div>
+        <div class="fiesta-texto">¡Ayúdanos para que nuestra boda sea inolvidable! Agrega la música que deseas escuchar.</div>
+        <!-- 🌸 REEMPLAZA CON TU PLAYLIST DE SPOTIFY -->
+        <a class="fiesta-btn" href="https://open.spotify.com" target="_blank">Playlist Music</a>
+      </div>
+
+      <!-- Lluvia de Sobres -->
+      <div class="fiesta-item">
+        <img class="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/2917/2917988.png" alt="Regalos"/>
+        <div class="fiesta-titulo">Lluvia de Sobres</div>
+        <!-- 🌸 EDITA O AGREGA DATOS BANCARIOS -->
+        <div class="fiesta-texto">
+          Tu presencia es nuestro mejor regalo. Si deseas obsequiarnos algo, aceptamos sobres con mucho cariño. 💛
         </div>
       </div>
-    </div>
 
-    <div class="field" id="acompanantes-field">
-      <label for="acompanantes">¿Cuántos acompañantes traerás?</label>
-      <select id="acompanantes">
-        <option value="0">Solo yo (1 persona)</option>
-        <option value="1">+1 acompañante (2 personas)</option>
-        <option value="2">+2 acompañantes (3 personas)</option>
-        <option value="3">+3 acompañantes (4 personas)</option>
-      </select>
-    </div>
+      <!-- Fotos / Hashtag -->
+      <div class="fiesta-item">
+        <img class="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="Fotos"/>
+        <div class="fiesta-titulo">Comparte las Fotos</div>
+        <div class="fiesta-texto">Comparte las fotos de la boda usando nuestro hashtag</div>
+        <!-- 🌸 EDITA HASHTAG -->
+        <div class="fiesta-hashtag">#SofíaYAlejandro</div>
+      </div>
 
-    <div class="field">
-      <label for="restricciones">Restricciones alimentarias</label>
-      <input type="text" id="restricciones" placeholder="Vegetariano, celiaco, alergias…" />
     </div>
+  </div><!-- /fiesta -->
 
-    <div class="field">
-      <label for="mensaje">Mensaje para los novios (opcional)</label>
-      <textarea id="mensaje" placeholder="Escribe tus buenos deseos ✨"></textarea>
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 10 — HASHTAG GRANDE
+       Edita: hashtag y texto
+  ════════════════════════════════════════ -->
+  <div class="hashtag-wrap reveal">
+    <p class="hashtag-label">Comparte el momento</p>
+    <!-- 🌸 EDITA HASHTAG -->
+    <span class="hashtag">#SofíaYAlejandro</span>
+    <p class="hashtag-sub">Etiqueta tus fotos y videos para que podamos verlos todos 📸</p>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 11 — RECOMENDACIONES
+       Edita: título y texto de cada tarjeta
+       Agrega más tarjetas copiando un bloque .reco-card
+  ════════════════════════════════════════ -->
+  <div class="section reveal">
+    <p class="s-ornament">✦ &nbsp; ✦</p>
+    <h2 class="s-title">Recomendaciones</h2>
+    <div class="s-divider"><span>✨</span></div>
+    <p class="s-text">¡Recomendaciones para tener en cuenta el día de la Boda!</p>
+  </div>
+
+  <div style="max-width:680px;margin:0 auto;padding:0 1.5rem 3.5rem;position:relative;z-index:1;" class="reveal">
+    <div class="reco-grid">
+
+      <!-- 🌸 EDITA O AGREGA TARJETAS -->
+      <div class="reco-card">
+        <img class="reco-icon" src="https://cdn-icons-png.flaticon.com/512/1047/1047349.png" alt="Niños"/>
+        <div class="reco-titulo">Niños: Dulces Sueños</div>
+        <div class="reco-texto">Amamos a los niños, pero esta celebración es solo para adultos. 🥂</div>
+      </div>
+
+      <div class="reco-card">
+        <img class="reco-icon" src="https://cdn-icons-png.flaticon.com/512/2933/2933245.png" alt="Puntualidad"/>
+        <div class="reco-titulo">Puntualidad</div>
+        <div class="reco-texto">Por favor llegar 15 minutos antes de la ceremonia. ⏰</div>
+      </div>
+
+      <div class="reco-card">
+        <img class="reco-icon" src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png" alt="Celular"/>
+        <div class="reco-titulo">Momento Especial</div>
+        <div class="reco-texto">Durante la ceremonia guardemos los celulares y vivamos el momento. 🤍</div>
+      </div>
+
+      <div class="reco-card">
+        <img class="reco-icon" src="https://cdn-icons-png.flaticon.com/512/1048/1048313.png" alt="Auto"/>
+        <div class="reco-titulo">Estacionamiento</div>
+        <!-- 🌸 EDITA -->
+        <div class="reco-texto">Hay estacionamiento disponible en el lugar. 🚗</div>
+      </div>
+
     </div>
+  </div>
 
-    <button class="btn" id="enviar-btn" onclick="enviarRSVP()">
-      Confirmar asistencia
-    </button>
+  <div class="gold-line reveal"></div>
 
-    <div class="msg success" id="msg-success">
-      ✦ ¡Gracias! Tu confirmación fue registrada con éxito. ¡Te esperamos! ✦
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 12 — HOTELES
+       Edita: nombre, estrellas, distancia, link Maps
+       Las fotos son links — reemplaza cada src
+  ════════════════════════════════════════ -->
+  <div class="section reveal">
+    <p class="s-ornament">✦ &nbsp; ✦</p>
+    <h2 class="s-title">Hoteles</h2>
+    <div class="s-divider"><span>🏨</span></div>
+  </div>
+
+  <div style="padding:0 1.5rem 3.5rem;position:relative;z-index:1;" class="reveal">
+    <div class="hoteles-grid">
+
+      <!-- 🌸 REEMPLAZA FOTOS Y DATOS -->
+      <div class="hotel-card">
+        <!-- 🌸 src = link de Google Drive o URL directa -->
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80" alt="Hotel 1"/>
+        <div class="hotel-body">
+          <div class="hotel-name">Hotel Marquis</div>
+          <div class="hotel-info">★★★★★ · A 5 min del salón</div>
+          <a class="btn-maps sm" href="https://maps.google.com" target="_blank">Ver más</a>
+        </div>
+      </div>
+
+      <div class="hotel-card">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&q=80" alt="Hotel 2"/>
+        <div class="hotel-body">
+          <div class="hotel-name">Camino Real</div>
+          <div class="hotel-info">★★★★ · A 10 min del salón</div>
+          <a class="btn-maps sm" href="https://maps.google.com" target="_blank">Ver más</a>
+        </div>
+      </div>
+
+      <div class="hotel-card">
+        <img class="hotel-img" src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80" alt="Hotel 3"/>
+        <div class="hotel-body">
+          <div class="hotel-name">Hotel Misión</div>
+          <div class="hotel-info">★★★ · Opción económica</div>
+          <a class="btn-maps sm" href="https://maps.google.com" target="_blank">Ver más</a>
+        </div>
+      </div>
+
     </div>
-    <div class="msg error" id="msg-error">
-      Hubo un problema al enviar. Por favor intenta de nuevo o contáctanos directamente.
-    </div>
-  </section>
+  </div>
 
+  <div class="gold-line reveal"></div>
+
+
+  <!-- ════════════════════════════════════════
+       SECCIÓN 13 — CONFIRMAR ASISTENCIA
+       Edita: fecha límite, número de WhatsApp, mensaje
+       Formato número: https://wa.me/521XXXXXXXXXX
+  ════════════════════════════════════════ -->
+  <div class="confirm-wrap reveal">
+    <p class="confirm-label">RSVP</p>
+    <div class="confirm-title">Confirmar Asistencia</div>
+
+    <!-- 🌸 EDITA FECHA LÍMITE -->
+    <div class="confirm-deadline">Antes del 31 de Mayo de 2025</div>
+
+    <p class="confirm-text">
+      Para nosotros es muy importante que confirmes tu asistencia antes de la fecha indicada.
+    </p>
+
+    <!-- 🌸 REEMPLAZA 5215500000000 CON TU NÚMERO (con código de país, sin + ni espacios) -->
+    <a class="btn-wa"
+       href="https://wa.me/5215500000000?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20🎉"
+       target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Confirma Aquí
+    </a>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+       Edita: nombres y año
+  ════════════════════════════════════════ -->
   <footer>
-    <p>Con amor, Sofía &amp; Alejandro · 2025</p>
+    <!-- 🌸 EDITA -->
+    <p>Con amor · Sofía &amp; Alejandro · 2025</p>
+    <p style="margin-top:.3rem;"><a href="#">Invitación Digital</a></p>
   </footer>
 
-</div>
+</div><!-- /page -->
 
-<script>
-  /* ============================================================
-     🌸  PASO 1: EDITA LA FECHA DE LA BODA  🌸
-     Formato: new Date('AÑO-MES-DÍA T HORA:MINUTO:SEGUNDO')
-     Ejemplo: 14 de junio 2025 a las 4:00 PM = 16:00:00
-  ============================================================ */
-  const FECHA_BODA = new Date('2026-05-2714:00:00');
+<!-- Script (countdown, galería, animaciones) -->
+<script src="script.js"></script>
 
-  /* ============================================================
-     🌸  PASO 2: PEGA TU URL DE GOOGLE APPS SCRIPT AQUÍ  🌸
-     (instrucciones abajo en los comentarios)
-  ============================================================ */
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby3_eAEx9xLOwT_9v-MA30Xkl3BuaTL6W5yqxbtojYfsX8nZCbKv_4ZBNmp54kKH_Svcw/exec';
-
-  /* ─── Countdown ─── */
-  function actualizarContador() {
-    const ahora = new Date();
-    const diff  = FECHA_BODA - ahora;
-
-    if (diff <= 0) {
-      document.getElementById('days').textContent    = '00';
-      document.getElementById('hours').textContent   = '00';
-      document.getElementById('minutes').textContent = '00';
-      document.getElementById('seconds').textContent = '00';
-      return;
-    }
-
-    const dias    = Math.floor(diff / 86400000);
-    const horas   = Math.floor((diff % 86400000) / 3600000);
-    const minutos = Math.floor((diff % 3600000)  / 60000);
-    const segs    = Math.floor((diff % 60000)     / 1000);
-
-    document.getElementById('days').textContent    = String(dias).padStart(2,'0');
-    document.getElementById('hours').textContent   = String(horas).padStart(2,'0');
-    document.getElementById('minutes').textContent = String(minutos).padStart(2,'0');
-    document.getElementById('seconds').textContent = String(segs).padStart(2,'0');
-  }
-
-  actualizarContador();
-  setInterval(actualizarContador, 1000);
-
-  /* ─── Mostrar/ocultar acompañantes según asistencia ─── */
-  document.querySelectorAll('input[name="asistencia"]').forEach(r => {
-    r.addEventListener('change', () => {
-      document.getElementById('acompanantes-field').style.display =
-        r.value === 'Sí asisto' ? 'block' : 'none';
-    });
-  });
-
-  /* ─── Enviar RSVP a Google Sheets ─── */
-  async function enviarRSVP() {
-    const nombre      = document.getElementById('nombre').value.trim();
-    const email       = document.getElementById('email').value.trim();
-    const telefono    = document.getElementById('telefono').value.trim();
-    const asistencia  = document.querySelector('input[name="asistencia"]:checked').value;
-    const acomp       = document.getElementById('acompanantes').value;
-    const restriccion = document.getElementById('restricciones').value.trim();
-    const mensaje     = document.getElementById('mensaje').value.trim();
-
-    if (!nombre || !email) {
-      alert('Por favor completa los campos obligatorios (nombre y correo).');
-      return;
-    }
-
-    const btn = document.getElementById('enviar-btn');
-    btn.disabled = true;
-    btn.textContent = 'Enviando…';
-
-    const data = {
-      nombre, email, telefono, asistencia,
-      acompanantes: asistencia === 'Sí asisto' ? acomp : '0',
-      restriccion, mensaje,
-      fecha: new Date().toLocaleString('es-MX')
-    };
-
-    try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      document.getElementById('msg-success').style.display = 'block';
-      document.getElementById('msg-error').style.display   = 'none';
-      btn.textContent = '¡Confirmado! ✦';
-    } catch (e) {
-      document.getElementById('msg-error').style.display   = 'block';
-      document.getElementById('msg-success').style.display = 'none';
-      btn.disabled = false;
-      btn.textContent = 'Confirmar asistencia';
-    }
-  }
-</script>
 </body>
 </html>
