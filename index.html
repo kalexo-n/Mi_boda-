@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!-- 🌸 EDITA EL TÍTULO -->
-<title>Sofía & Alejandro – ¡Nos Casamos!</title>
+<title>Jhon & Natalia – ¡Nos Casamos!</title>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet"/>
 <!-- React desde CDN — no requiere instalación ni build -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
@@ -184,8 +184,8 @@ footer a { color: rgba(200,169,110,.3); text-decoration: none; }
    ============================================================ */
 const CONFIG = {
   // Nombres
-  nombre1: "Sofía",
-  nombre2: "Alejandro",
+  nombre1: "Jhon",
+  nombre2: "Natalia",
 
   // Fecha de la boda (AÑO, MES-1, DÍA, HORA, MINUTOS)
   // Mes: Enero=0, Feb=1, Mar=2, Abr=3, May=4, Jun=5, Jul=6...
@@ -222,17 +222,19 @@ const CONFIG = {
   salonMap: "https://maps.google.com",
 
   // 🌸 GALERÍA — reemplaza con tus links de Google Drive
+  // 🌸 FOTOS — reemplaza cada src con tu link de Google Drive
+  // Formato: https://drive.google.com/uc?export=view&id=TU_ID
   fotos: [
-    { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=700&q=80", wide: true },
-    { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&q=80" },
-    { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80" },
-    { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=80" },
-    { src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=400&q=80" },
-    { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400&q=80" },
+    { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=700&q=80", wide: true }, // 🌸 FOTO 1 (grande)
+    { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&q=80" },             // 🌸 FOTO 2
+    { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80" },             // 🌸 FOTO 3
+    { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=80" },             // 🌸 FOTO 4
+    { src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=400&q=80" },             // 🌸 FOTO 5
+    { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400&q=80" },             // 🌸 FOTO 6
   ],
 
   // Hashtag
-  hashtag: "#SofíaYAlejandro",
+  hashtag: "#JhonYNatalia",
 
   // Dress code
   dressMujeres: "Vestido largo de un solo tono (No estampados). Se reserva el color blanco.",
@@ -249,10 +251,11 @@ const CONFIG = {
   whatsappMsg: "Hola! Confirmo mi asistencia a la boda 🎉",
 
   // 🌸 Hoteles — reemplaza fotos y links
+  // 🌸 HOTELES — reemplaza img y map con tus datos reales
   hoteles: [
-    { name: "Hotel Marquis", info: "★★★★★ · A 5 min del salón", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80", map: "https://maps.google.com" },
-    { name: "Camino Real",   info: "★★★★ · A 10 min del salón", img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&q=80", map: "https://maps.google.com" },
-    { name: "Hotel Misión",  info: "★★★ · Opción económica",    img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80", map: "https://maps.google.com" },
+    { name: "Hotel 1", info: "★★★★★ · Distancia al salón", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80", map: "https://maps.google.com" }, // 🌸
+    { name: "Hotel 2", info: "★★★★ · Distancia al salón",  img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&q=80", map: "https://maps.google.com" }, // 🌸
+    { name: "Hotel 3", info: "★★★ · Opción económica",     img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80", map: "https://maps.google.com" }, // 🌸
   ],
 
   // Recomendaciones
@@ -328,290 +331,4 @@ const Countdown = () => {
     <div className="countdown-wrap">
       <p className="cd-label">Faltan</p>
       <div className="countdown">
-        <div className="c-unit"><span className="c-num">{tiempo.d}</span><span className="c-label">Días</span></div>
-        <div className="c-sep">:</div>
-        <div className="c-unit"><span className="c-num">{tiempo.h}</span><span className="c-label">Horas</span></div>
-        <div className="c-sep">:</div>
-        <div className="c-unit"><span className="c-num">{tiempo.m}</span><span className="c-label">Minutos</span></div>
-        <div className="c-sep">:</div>
-        <div className="c-unit"><span className="c-num">{tiempo.s}</span><span className="c-label">Segundos</span></div>
-      </div>
-    </div>
-  );
-};
-
-// ── MENSAJE ──
-const Mensaje = () => (
-  <div className="section reveal">
-    <p className="s-ornament">✦ &nbsp; ✦</p>
-    <h1 className="s-title">¡Nos Casamos!</h1>
-    <div className="s-divider"><span>🌸</span></div>
-    <p className="s-text">{CONFIG.mensaje}</p>
-  </div>
-);
-
-// ── FOTO PAREJA ──
-const FotoPareja = () => (
-  <div className="section reveal" style={{padding:'2rem 1.5rem'}}>
-    <img className="foto-pareja" src={CONFIG.fotoPareja} alt={`${CONFIG.nombre1} y ${CONFIG.nombre2}`}/>
-  </div>
-);
-
-// ── ITINERARIO ──
-const Itinerario = () => (
-  <div className="section reveal">
-    <p className="s-ornament">✦ &nbsp; ✦</p>
-    <h2 className="s-title">Itinerario</h2>
-    <div className="s-divider"><span>🕊️</span></div>
-    <img className="itinerario-img" src={CONFIG.fotoItinerario} alt="Itinerario" style={{filter:'sepia(.2)'}}/>
-    <p style={{fontSize:'.68rem',color:'var(--gold)',marginTop:'.8rem',letterSpacing:'.12em'}}>
-      Reemplaza esta imagen con tu programa de Canva
-    </p>
-  </div>
-);
-
-// ── LUGARES ──
-const Lugares = () => (
-  <div className="lugares-wrap">
-    <div className="lugar-bloque reveal">
-      <p className="s-ornament">Ceremonia</p>
-      <div className="lugar-titulo">Ceremonia</div>
-      <div className="s-divider" style={{marginBottom:'1.5rem'}}><span>⛪</span></div>
-      <img className="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/1205/1205526.png" alt="Iglesia"/>
-      <div className="lugar-info">
-        <strong style={{color:'var(--brown)',fontSize:'1rem'}}>{CONFIG.iglesiaName}</strong><br/>
-        {CONFIG.iglesiaDir}<br/>
-        <strong style={{color:'var(--gold)'}}>{CONFIG.iglesiaHora}</strong>
-      </div>
-      <a className="btn-maps" href={CONFIG.iglesiaMap} target="_blank">📍 Cómo Llegar</a>
-    </div>
-    <div className="lugar-bloque reveal">
-      <p className="s-ornament">Recepción</p>
-      <div className="lugar-titulo">Recepción</div>
-      <div className="s-divider" style={{marginBottom:'1.5rem'}}><span>🥂</span></div>
-      <img className="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/3174/3174804.png" alt="Recepción"/>
-      <div className="lugar-info">
-        <strong style={{color:'var(--brown)',fontSize:'1rem'}}>{CONFIG.salonName}</strong><br/>
-        {CONFIG.salonDir}<br/>
-        <strong style={{color:'var(--gold)'}}>{CONFIG.salonHora}</strong>
-      </div>
-      <a className="btn-maps" href={CONFIG.salonMap} target="_blank">📍 Cómo Llegar</a>
-    </div>
-  </div>
-);
-
-// ── GALERÍA ──
-const Galeria = () => {
-  const [lbSrc, setLbSrc] = React.useState(null);
-
-  React.useEffect(() => {
-    const handler = e => { if(e.key==='Escape') setLbSrc(null); };
-    document.addEventListener('keydown', handler);
-    return () => document.removeEventListener('keydown', handler);
-  }, []);
-
-  React.useEffect(() => {
-    document.body.style.overflow = lbSrc ? 'hidden' : '';
-  }, [lbSrc]);
-
-  return (
-    <>
-      <div className="section reveal" style={{paddingBottom:'1.5rem'}}>
-        <p className="s-ornament">✦ &nbsp; ✦</p>
-        <h2 className="s-title">Nuestro Amor</h2>
-        <div className="s-divider"><span>💕</span></div>
-      </div>
-
-      <div className="galeria-grid reveal">
-        {CONFIG.fotos.map((f, i) => (
-          <div key={i} className={`galeria-item${f.wide?' wide':''}`} onClick={() => setLbSrc(f.src)}>
-            <img src={f.src} alt={`Foto ${i+1}`}/>
-          </div>
-        ))}
-      </div>
-
-      {lbSrc && (
-        <div className="lb open" onClick={() => setLbSrc(null)}>
-          <button className="lb-close">✕</button>
-          <img src={lbSrc} alt="Foto ampliada"/>
-        </div>
-      )}
-    </>
-  );
-};
-
-// ── VERSÍCULO ──
-const Versiculo = () => (
-  <div className="versiculo-wrap reveal">
-    <div className="versiculo-lines"></div>
-    <p className="versiculo-text">{CONFIG.versiculo}</p>
-    <p className="versiculo-ref">{CONFIG.versiculoRef}</p>
-    <div className="versiculo-lines" style={{marginTop:'1.5rem'}}></div>
-  </div>
-);
-
-// ── NUESTRA FIESTA ──
-const Fiesta = () => (
-  <>
-    <div className="section reveal" style={{paddingBottom:'1rem'}}>
-      <p className="s-ornament">✦ &nbsp; ✦</p>
-      <h2 className="s-title">Nuestra Fiesta</h2>
-      <div className="s-divider"><span>🎉</span></div>
-      <p className="s-text">Detalles para tener en cuenta el día de la boda.</p>
-    </div>
-    <div className="fiesta-wrap">
-      <div className="fiesta-grid reveal">
-        <div className="fiesta-item">
-          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Dress Code"/>
-          <div className="fiesta-titulo">Dress Code</div>
-          <div className="fiesta-texto">
-            <strong>MUJERES</strong><br/>{CONFIG.dressMujeres}<br/><br/>
-            <strong>HOMBRES</strong><br/>{CONFIG.dressHombres}
-          </div>
-        </div>
-        <div className="fiesta-item">
-          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Música"/>
-          <div className="fiesta-titulo">Música</div>
-          <div className="fiesta-texto">¡Ayúdanos para que nuestra boda sea inolvidable! Agrega la música que deseas escuchar.</div>
-          <a className="fiesta-btn" href={CONFIG.spotifyUrl} target="_blank">Playlist Music</a>
-        </div>
-        <div className="fiesta-item">
-          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/2917/2917988.png" alt="Regalos"/>
-          <div className="fiesta-titulo">Lluvia de Sobres</div>
-          <div className="fiesta-texto">Tu presencia es nuestro mejor regalo. Si deseas obsequiarnos algo, aceptamos sobres con mucho cariño. 💛</div>
-        </div>
-        <div className="fiesta-item">
-          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="Fotos"/>
-          <div className="fiesta-titulo">Comparte las Fotos</div>
-          <div className="fiesta-texto">Comparte las fotos de la boda usando nuestro hashtag</div>
-          <div className="fiesta-hashtag">{CONFIG.hashtag}</div>
-        </div>
-      </div>
-    </div>
-  </>
-);
-
-// ── HASHTAG ──
-const Hashtag = () => (
-  <div className="hashtag-wrap reveal">
-    <p className="hashtag-label">Comparte el momento</p>
-    <span className="hashtag">{CONFIG.hashtag}</span>
-    <p className="hashtag-sub">Etiqueta tus fotos y videos para que podamos verlos todos 📸</p>
-  </div>
-);
-
-// ── RECOMENDACIONES ──
-const Recomendaciones = () => (
-  <>
-    <div className="section reveal">
-      <p className="s-ornament">✦ &nbsp; ✦</p>
-      <h2 className="s-title">Recomendaciones</h2>
-      <div className="s-divider"><span>✨</span></div>
-      <p className="s-text">¡Recomendaciones para tener en cuenta el día de la Boda!</p>
-    </div>
-    <div style={{maxWidth:'680px',margin:'0 auto',padding:'0 1.5rem 3.5rem'}} className="reveal">
-      <div className="reco-grid">
-        {CONFIG.recomendaciones.map((r,i) => (
-          <div key={i} className="reco-card">
-            <img className="reco-icon" src={r.icon} alt={r.titulo}/>
-            <div className="reco-titulo">{r.titulo}</div>
-            <div className="reco-texto">{r.texto}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </>
-);
-
-// ── HOTELES ──
-const Hoteles = () => (
-  <>
-    <div className="section reveal">
-      <p className="s-ornament">✦ &nbsp; ✦</p>
-      <h2 className="s-title">Hoteles</h2>
-      <div className="s-divider"><span>🏨</span></div>
-    </div>
-    <div style={{padding:'0 1.5rem 3.5rem'}} className="reveal">
-      <div className="hoteles-grid">
-        {CONFIG.hoteles.map((h,i) => (
-          <div key={i} className="hotel-card">
-            <img className="hotel-img" src={h.img} alt={h.name}/>
-            <div className="hotel-body">
-              <div className="hotel-name">{h.name}</div>
-              <div className="hotel-info">{h.info}</div>
-              <a className="btn-maps sm" href={h.map} target="_blank">Ver más</a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </>
-);
-
-// ── CONFIRMAR ──
-const Confirmar = () => {
-  const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
-  return (
-    <div className="confirm-wrap reveal">
-      <p className="confirm-label">RSVP</p>
-      <div className="confirm-title">Confirmar Asistencia</div>
-      <div className="confirm-deadline">{CONFIG.fechaLimite}</div>
-      <p className="confirm-text">Para nosotros es muy importante que confirmes tu asistencia antes de la fecha indicada.</p>
-      <a className="btn-wa" href={url} target="_blank">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        Confirma Aquí
-      </a>
-    </div>
-  );
-};
-
-// ── FOOTER ──
-const Footer = () => (
-  <footer>
-    <p>Con amor · {CONFIG.nombre1} &amp; {CONFIG.nombre2} · 2026</p>
-  </footer>
-);
-
-// ── APP PRINCIPAL ──
-const App = () => {
-  // Scroll reveal
-  React.useEffect(() => {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-      });
-    }, { threshold: .1 });
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-
-  return (
-    <>
-      <Hero/>
-      <Countdown/>
-      <Mensaje/>
-      <GoldLine/>
-      <FotoPareja/>
-      <GoldLine/>
-      <Itinerario/>
-      <GoldLine/>
-      <Lugares/>
-      <GoldLine/>
-      <Galeria/>
-      <Versiculo/>
-      <Fiesta/>
-      <Hashtag/>
-      <Recomendaciones/>
-      <GoldLine/>
-      <Hoteles/>
-      <GoldLine/>
-      <Confirmar/>
-      <Footer/>
-    </>
-  );
-};
-
-ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
-</script>
-</body>
-</html>
+        <div className
