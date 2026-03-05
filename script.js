@@ -7,7 +7,7 @@
    Formato: 'AÑO-MES-DÍATHORA:MIN:SEG'
    Ejemplo: 14 junio 2025 a las 4:00 PM → '2025-06-14T16:00:00'
    ============================================================ */
-const FECHA_BODA = new Date('2025-06-14T16:00:00');
+const FECHA_BODA = new Date('2026-06-27T14:00:00');
 
 /* ── Countdown ── */
 function tick() {
