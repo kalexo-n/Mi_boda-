@@ -193,7 +193,7 @@ const CONFIG = {
 
   // Texto fecha visible
   fechaTexto: "Sábado · 27 de Junio de 2026",
-  ciudad: "Ciudad de México",
+  ciudad: "Barranquilla",
 
   // Mensaje principal
   mensaje: "El destino nos presentó, y desde entonces caminamos juntos. Dios ha estado presente en nuestra relación, guiando nuestros pasos. Hemos aprendido a permanecer unidos con una misma visión, propósito y amor. Ahora daremos nuestro \"sí\" más importante, y queremos compartirlo con quienes han sido testigos y cómplices de nuestra historia.",
@@ -204,22 +204,22 @@ const CONFIG = {
 
   // 🌸 FOTO PAREJA — reemplaza con tu link de Google Drive
   // Formato: https://drive.google.com/uc?export=view&id=TU_ID
-  fotoPareja: "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=700&q=85",
+  fotoPareja: "https://i.ibb.co/LDYSyvt8/IMG-20260305-155710.jpg",
 
   // 🌸 ITINERARIO — reemplaza con tu imagen de Canva
-  fotoItinerario: "https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80",
+  fotoItinerario: "https://raw.githubusercontent.com/kalexo-n/Mi_boda-/main/itinerario.png",
 
   // Ceremonia
-  iglesiaName: "Parroquia de San Francisco",
-  iglesiaDir: "Av. Insurgentes Sur 123, Ciudad de México",
-  iglesiaHora: "4:00 PM",
-  iglesiaMap: "https://maps.google.com",
+  iglesiaName: "Parroquia Cristo Rey",
+  iglesiaDir: "Cra 10 # 73E-201 Barranquilla",
+  iglesiaHora: "2:00 PM",
+  iglesiaMap: "https://maps.app.goo.gl/WFsyZmqAYKehaHr68",
 
   // Recepción
-  salonName: "Hacienda Los Olivos",
-  salonDir: "Km 12, Carretera Picacho, Ciudad de México",
-  salonHora: "7:00 PM",
-  salonMap: "https://maps.google.com",
+  salonName: "Conjunto campestre Villa Marsella, Villa Sayjome",
+  salonDir: "Kilometro 1 vía Sabanagrande - Polonuevo",
+  salonHora: "5:00 PM",
+  salonMap: "https://maps.app.goo.gl/HyuqUiZsQJowEp3u8",
 
   // 🌸 GALERÍA — reemplaza con tus links de Google Drive
   // 🌸 FOTOS — reemplaza cada src con tu link de Google Drive
@@ -234,7 +234,7 @@ const CONFIG = {
   ],
 
   // Hashtag
-  hashtag: "#JhonYNatalia",
+  hashtag: "#Jhon&Natalia",
 
   // Dress code
   dressMujeres: "Vestido largo de un solo tono (No estampados). Se reserva el color blanco.",
@@ -250,13 +250,7 @@ const CONFIG = {
   whatsapp: "5215500000000",
   whatsappMsg: "Hola! Confirmo mi asistencia a la boda 🎉",
 
-  // 🌸 Hoteles — reemplaza fotos y links
-  // 🌸 HOTELES — reemplaza img y map con tus datos reales
-  hoteles: [
-    { name: "Hotel 1", info: "★★★★★ · Distancia al salón", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&q=80", map: "https://maps.google.com" }, // 🌸
-    { name: "Hotel 2", info: "★★★★ · Distancia al salón",  img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&q=80", map: "https://maps.google.com" }, // 🌸
-    { name: "Hotel 3", info: "★★★ · Opción económica",     img: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&q=80", map: "https://maps.google.com" }, // 🌸
-  ],
+
 
   // Recomendaciones
   recomendaciones: [
@@ -366,10 +360,18 @@ const Itinerario = () => (
     <p className="s-ornament">✦ &nbsp; ✦</p>
     <h2 className="s-title">Itinerario</h2>
     <div className="s-divider"><span>🕊️</span></div>
-    <img className="itinerario-img" src={CONFIG.fotoItinerario} alt="Itinerario" style={{filter:'sepia(.2)'}}/>
-    <p style={{fontSize:'.68rem',color:'var(--gold)',marginTop:'.8rem',letterSpacing:'.12em'}}>
-      Reemplaza esta imagen con tu programa de Canva
-    </p>
+    <img 
+      className="itinerario-img" 
+      src={CONFIG.fotoItinerario} 
+      alt="Itinerario" 
+      style={{
+        filter: 'none',
+        border: 'none',
+        outline: 'none',
+        boxShadow: 'none',
+        background: 'transparent'
+      }}
+    />
   </div>
 );
 
@@ -472,18 +474,14 @@ const Fiesta = () => (
             <strong>HOMBRES</strong><br/>{CONFIG.dressHombres}
           </div>
         </div>
-        <div className="fiesta-item">
-          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Música"/>
-          <div className="fiesta-titulo">Música</div>
-          <div className="fiesta-texto">¡Ayúdanos para que nuestra boda sea inolvidable! Agrega la música que deseas escuchar.</div>
-          <a className="fiesta-btn" href={CONFIG.spotifyUrl} target="_blank">Playlist Music</a>
-        </div>
+        
         <div className="fiesta-item">
           <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/2917/2917988.png" alt="Regalos"/>
           <div className="fiesta-titulo">Lluvia de Sobres</div>
           <div className="fiesta-texto">Tu presencia es nuestro mejor regalo. Si deseas obsequiarnos algo, aceptamos sobres con mucho cariño. 💛</div>
         </div>
        
+      </div>
     </div>
   </>
 );
@@ -577,7 +575,7 @@ const App = () => {
       <Hashtag/>
       <Recomendaciones/>
       <GoldLine/>
-      <Hoteles/>
+      
       <GoldLine/>
       <Confirmar/>
       <Footer/>
