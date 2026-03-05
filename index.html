@@ -483,13 +483,7 @@ const Fiesta = () => (
           <div className="fiesta-titulo">Lluvia de Sobres</div>
           <div className="fiesta-texto">Tu presencia es nuestro mejor regalo. Si deseas obsequiarnos algo, aceptamos sobres con mucho cariño. 💛</div>
         </div>
-        <div className="fiesta-item">
-          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="Fotos"/>
-          <div className="fiesta-titulo">Comparte las Fotos</div>
-          <div className="fiesta-texto">Comparte las fotos de la boda usando nuestro hashtag</div>
-          <div className="fiesta-hashtag">{CONFIG.hashtag}</div>
-        </div>
-      </div>
+       
     </div>
   </>
 );
@@ -526,30 +520,7 @@ const Recomendaciones = () => (
   </>
 );
 
-// ── HOTELES ──
-const Hoteles = () => (
-  <>
-    <div className="section reveal">
-      <p className="s-ornament">✦ &nbsp; ✦</p>
-      <h2 className="s-title">Hoteles</h2>
-      <div className="s-divider"><span>🏨</span></div>
-    </div>
-    <div style={{padding:'0 1.5rem 3.5rem'}} className="reveal">
-      <div className="hoteles-grid">
-        {CONFIG.hoteles.map((h,i) => (
-          <div key={i} className="hotel-card">
-            <img className="hotel-img" src={h.img} alt={h.name}/>
-            <div className="hotel-body">
-              <div className="hotel-name">{h.name}</div>
-              <div className="hotel-info">{h.info}</div>
-              <a className="btn-maps sm" href={h.map} target="_blank">Ver más</a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </>
-);
+
 
 // ── CONFIRMAR ──
 const Confirmar = () => {
