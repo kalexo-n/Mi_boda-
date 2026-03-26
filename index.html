@@ -1,209 +1,94 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitación</title>
+  <meta charset="UTF-8">
+  <title>Invitación Boda</title>
 
-<!-- React -->
-<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Evitar caché -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
 
-<!-- Fuentes -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Lato&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --beige: #F5F0E8;
-  --gold: #C8A96E;
-  --dark: #3d2b1a;
-}
-
-body {
-  margin: 0;
-  font-family: 'Lato', sans-serif;
-  background: var(--beige);
-  color: var(--dark);
-}
-
-h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3em;
-}
-
-.section {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-/* Animaciones */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 1s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Countdown */
-.countdown {
-  font-size: 2em;
-  background: linear-gradient(135deg, #ffffff 0%, #e6d3b3 100%);
-  padding: 20px;
-  border-radius: 10px;
-}
-
-/* Botón */
-button {
-  padding: 12px 20px;
-  border: none;
-  background: var(--gold);
-  color: white;
-  font-size: 1em;
-  border-radius: 5px;
-  cursor: pointer;
-}
-</style>
-</head>
-
-<body>
-<div id="root"></div>
-
-<script type="text/babel">
-
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbxeSDF4udZSzUcd07ucQct_-6O9ob4bTyIcbBb7lvgsyVxVAiMgq88z1eUbEozhZ3UvXg/exec";
-
-function Cargando() {
-  return <div className="section">Cargando invitación...</div>;
-}
-
-function AccesoDenegado({nombre}) {
-  return (
-    <div className="section">
-      <h2>Acceso no válido</h2>
-      <p>{nombre}</p>
-    </div>
-  );
-}
-
-function Hero() {
-  return (
-    <div className="section reveal">
-      <h1>Jhon & Natalia</h1>
-      <p>Nos casamos</p>
-    </div>
-  );
-}
-
-function Countdown() {
-  const [time, setTime] = React.useState("");
-
-  React.useEffect(() => {
-    const target = new Date("2026-12-20");
-
-    const interval = setInterval(() => {
-      const now = new Date();
-      const diff = target - now;
-
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor(diff / (1000 * 60 * 60) % 24);
-
-      setTime(`${d} días ${h} horas`);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return <div className="section countdown reveal">{time}</div>;
-}
-
-function Confirmar() {
-  const [nombre, setNombre] = React.useState("");
-
-  const enviar = () => {
-    fetch(SHEET_URL, {
-      method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify({ nombre })
-    });
-
-    alert("Confirmación enviada");
-  };
-
-  return (
-    <div className="section reveal">
-      <h2>Confirmar asistencia</h2>
-      <input 
-        placeholder="Tu nombre"
-        value={nombre}
-        onChange={e => setNombre(e.target.value)}
-      />
-      <br/><br/>
-      <button onClick={enviar}>Confirmar</button>
-    </div>
-  );
-}
-
-function App() {
-  const [acceso, setAcceso] = React.useState("loading");
-  const [nombreUrl, setNombreUrl] = React.useState("");
-
-  React.useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const invitado = params.get("invitado");
-
-    if (!invitado) {
-      setAcceso("no-param");
-      return;
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f7f7f7;
+      padding: 50px;
     }
 
-    setNombreUrl(invitado);
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
 
-    fetch(`${SHEET_URL}?nombre=${encodeURIComponent(invitado)}`)
-      .then(r => r.json())
-      .then(data => {
-        if (data.ok) setAcceso("ok");
-        else setAcceso("denied");
-      })
-      .catch(() => setAcceso("denied"));
-  }, []);
+    .ok {
+      color: green;
+      font-weight: bold;
+    }
 
-  /* Activar animaciones */
-  React.useEffect(() => {
-    const els = document.querySelectorAll('.reveal');
+    .denied {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+  <div class="card">
+    <h2>Invitación</h2>
+    <p id="mensaje">Verificando invitación...</p>
+  </div>
+
+  <script>
+    const SHEET_URL = "https://script.google.com/macros/s/AKfycbxeSDF4udZSzUcd07ucQct_-6O9ob4bTyIcbBb7lvgsyVxVAiMgq88z1eUbEozhZ3UvXg/exec";
+
+    // Obtener parámetro de la URL
+    function getParametro(nombre) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(nombre);
+    }
+
+    // JSONP para evitar CORS
+    function verificarInvitado(nombre) {
+      return new Promise((resolve) => {
+        const script = document.createElement("script");
+        const callbackName = "callback_" + Date.now();
+
+        window[callbackName] = function(data) {
+          resolve(data);
+          document.body.removeChild(script);
+          delete window[callbackName];
+        };
+
+        script.src = `${SHEET_URL}?nombre=${encodeURIComponent(nombre)}&callback=${callbackName}`;
+        document.body.appendChild(script);
       });
-    });
+    }
 
-    els.forEach(el => observer.observe(el));
+    const invitado = getParametro("invitado");
+    const mensaje = document.getElementById("mensaje");
 
-    return () => observer.disconnect();
-  }, []);
+    if (!invitado) {
+      mensaje.innerHTML = "<span class='denied'>Acceso no válido</span>";
+    } else {
+      verificarInvitado(invitado).then(data => {
+        if (data.ok) {
+          mensaje.innerHTML = `<span class='ok'>Bienvenido ${invitado}</span>`;
+        } else {
+          mensaje.innerHTML = `<span class='denied'>Acceso no válido<br>${invitado}</span>`;
+        }
+      }).catch(() => {
+        mensaje.innerHTML = "<span class='denied'>Error de conexión</span>";
+      });
+    }
+  </script>
 
-  if (acceso === "loading") return <Cargando />;
-  if (acceso === "no-param") return <AccesoDenegado />;
-  if (acceso === "denied") return <AccesoDenegado nombre={nombreUrl} />;
-
-  return (
-    <>
-      <Hero />
-      <Countdown />
-      <Confirmar />
-    </>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-
-</script>
 </body>
 </html>
+```
