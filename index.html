@@ -163,7 +163,7 @@ function App() {
 
     setNombreUrl(invitado);
 
-    fetch(`${SHEET_URL}?action=verificar&nombre=${encodeURIComponent(invitado)}`)
+    fetch(`${SHEET_URL}?nombre=${encodeURIComponent(invitado)}`)
       .then(r => r.json())
       .then(data => {
         if (data.ok) setAcceso("ok");
