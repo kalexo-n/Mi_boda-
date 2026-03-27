@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jhon & Natalia - ¡Nos Casamos!</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,700;1,400&family=Dancing+Script:wght@600;700&family=Jost:wght@300;400;500&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,700;1,400&family=Dancing+Script:wght@600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
@@ -27,1195 +24,667 @@
       --text: #3A2830;
       --gray: #7A6870;
     }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: var(--cream);
-      color: var(--text);
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--cream); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
 
     .hero {
-      min-height: 100vh;
-      background: var(--cream);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 4rem 2rem 3rem;
-      position: relative;
-      overflow: hidden;
+      min-height: 100vh; background: var(--cream);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 4rem 2rem 3rem; position: relative; overflow: hidden;
     }
-
     .hero-tag {
-      font-family: 'Jost', sans-serif;
-      font-size: .6rem;
-      letter-spacing: .5em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 1rem;
+      font-family: 'Jost', sans-serif; font-size: .6rem; letter-spacing: .5em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 1rem;
       animation: fadeUp .8s ease both;
     }
-
-    .fecha-wrap {
-      position: relative;
-      display: inline-block;
-    }
-
+    .fecha-wrap { position: relative; display: inline-block; }
     .fecha-stack {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      line-height: .85;
-      position: relative;
-      z-index: 2;
+      display: flex; flex-direction: column; align-items: center;
+      line-height: .85; position: relative; z-index: 2;
       animation: fadeUp .9s .1s ease both;
     }
-
     .fecha-num {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(7rem, 28vw, 13rem);
-      color: var(--burgundy);
-      letter-spacing: -.02em;
-      line-height: .88;
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      font-size: clamp(7rem, 28vw, 13rem); color: var(--burgundy);
+      letter-spacing: -.02em; line-height: .88;
     }
-
     .wedding-of {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.8rem, 6vw, 3rem);
-      color: var(--orange);
-      margin: 1.2rem 0 .6rem;
-      position: relative;
-      z-index: 4;
+      font-family: 'Dancing Script', cursive; font-size: clamp(1.8rem, 6vw, 3rem);
+      color: var(--orange); margin: 1.2rem 0 .6rem; position: relative; z-index: 4;
       animation: fadeUp .9s .3s ease both;
     }
-
-    .wedding-of::before,
-    .wedding-of::after {
-      content: '——';
-      font-family: 'Cormorant Garamond', serif;
-      font-size: .75em;
-      color: var(--green);
-      opacity: .6;
-      vertical-align: middle;
-      margin: 0 .4em;
+    .wedding-of::before, .wedding-of::after {
+      content: '——'; font-family: 'Cormorant Garamond', serif; font-size: .75em;
+      color: var(--green); opacity: .6; vertical-align: middle; margin: 0 .4em;
     }
-
     .hero-names {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(.9rem, 2.5vw, 1.1rem);
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: var(--burgundy);
-      font-weight: 600;
-      animation: fadeUp .9s .4s ease both;
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(.9rem, 2.5vw, 1.1rem);
+      letter-spacing: .3em; text-transform: uppercase; color: var(--burgundy);
+      font-weight: 600; animation: fadeUp .9s .4s ease both;
     }
-
     .hero-date-text {
-      font-size: .68rem;
-      letter-spacing: .25em;
-      color: var(--gray);
-      margin-top: .5rem;
-      animation: fadeUp .9s .5s ease both;
+      font-size: .68rem; letter-spacing: .25em; color: var(--gray);
+      margin-top: .5rem; animation: fadeUp .9s .5s ease both;
     }
-
-    .corner-floral {
-      position: absolute;
-      pointer-events: none;
-      opacity: .75;
-    }
-
-    .corner-floral.tl {
-      top: 0;
-      left: 0;
-      width: 220px;
-    }
-
-    .corner-floral.tr {
-      top: 0;
-      right: 0;
-      width: 220px;
-      transform: scaleX(-1);
-    }
-
-    .corner-floral.bl {
-      bottom: 0;
-      left: 0;
-      width: 170px;
-      transform: scaleY(-1);
-    }
-
-    .corner-floral.br {
-      bottom: 0;
-      right: 0;
-      width: 170px;
-      transform: scale(-1);
-    }
+    .corner-floral { position: absolute; pointer-events: none; opacity: .75; }
+    .corner-floral.tl { top: 0; left: 0; width: 220px; }
+    .corner-floral.tr { top: 0; right: 0; width: 220px; transform: scaleX(-1); }
+    .corner-floral.bl { bottom: 0; left: 0; width: 170px; transform: scaleY(-1); }
+    .corner-floral.br { bottom: 0; right: 0; width: 170px; transform: scale(-1); }
 
     /* Countdown */
     .countdown-wrap {
-      background: var(--cream2);
-      padding: 3rem 1.5rem;
-      text-align: center;
-      border-top: 1px solid rgba(107, 45, 78, .12);
-      border-bottom: 1px solid rgba(107, 45, 78, .12);
+      background: var(--cream2); padding: 3rem 1.5rem; text-align: center;
+      border-top: 1px solid rgba(107,45,78,.12); border-bottom: 1px solid rgba(107,45,78,.12);
     }
-
-    .cd-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.2rem;
-      color: var(--burgundy);
-      margin-bottom: 1.5rem;
-    }
-
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: clamp(.8rem, 5vw, 4rem);
-      flex-wrap: wrap;
-    }
-
-    .c-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: .3rem;
-    }
-
-    .c-num {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 11vw, 5.5rem);
-      color: var(--burgundy);
-      line-height: 1;
-      font-weight: 700;
-    }
-
-    .c-label {
-      font-size: .55rem;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: var(--green);
-    }
-
-    .c-sep {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 7vw, 4rem);
-      color: var(--coral);
-      opacity: .5;
-      align-self: center;
-      padding-bottom: .8rem;
-    }
+    .cd-title { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--burgundy); margin-bottom: 1.5rem; }
+    .countdown { display: flex; justify-content: center; gap: clamp(.8rem, 5vw, 4rem); flex-wrap: wrap; }
+    .c-unit { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+    .c-num { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 11vw, 5.5rem); color: var(--burgundy); line-height: 1; font-weight: 700; }
+    .c-label { font-size: .55rem; letter-spacing: .3em; text-transform: uppercase; color: var(--green); }
+    .c-sep { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4rem); color: var(--coral); opacity: .5; align-self: center; padding-bottom: .8rem; }
 
     /* Sections */
-    .section {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
-      text-align: center;
-    }
-
-    .s-tag {
-      font-size: .58rem;
-      letter-spacing: .45em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: .5rem;
-    }
-
-    .s-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      color: var(--burgundy);
-      line-height: 1.2;
-      margin-bottom: .5rem;
-    }
-
-    .s-divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .6rem;
-      margin: .8rem auto 2rem;
-    }
-
-    .s-divider::before {
-      content: '';
-      flex: 1;
-      max-width: 70px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--coral));
-    }
-
-    .s-divider::after {
-      content: '';
-      flex: 1;
-      max-width: 70px;
-      height: 1px;
-      background: linear-gradient(270deg, transparent, var(--coral));
-    }
-
-    .s-divider span {
-      color: var(--coral);
-      font-size: .9rem;
-    }
-
-    .s-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      line-height: 2;
-      color: var(--gray);
-      max-width: 520px;
-      margin: 0 auto;
-      font-style: italic;
-    }
-
-    .divider-line {
-      width: 100%;
-      max-width: 680px;
-      margin: 0 auto;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--coral), var(--pink), var(--purple), var(--coral), transparent);
-      opacity: .3;
-    }
+    .section { max-width: 680px; margin: 0 auto; padding: 4rem 1.5rem; text-align: center; }
+    .s-tag { font-size: .58rem; letter-spacing: .45em; text-transform: uppercase; color: var(--green); margin-bottom: .5rem; }
+    .s-title { font-family: 'Dancing Script', cursive; font-size: clamp(2.5rem, 8vw, 4rem); color: var(--burgundy); line-height: 1.2; margin-bottom: .5rem; }
+    .s-divider { display: flex; align-items: center; justify-content: center; gap: .6rem; margin: .8rem auto 2rem; }
+    .s-divider::before { content: ''; flex: 1; max-width: 70px; height: 1px; background: linear-gradient(90deg, transparent, var(--coral)); }
+    .s-divider::after { content: ''; flex: 1; max-width: 70px; height: 1px; background: linear-gradient(270deg, transparent, var(--coral)); }
+    .s-divider span { color: var(--coral); font-size: .9rem; }
+    .s-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 2; color: var(--gray); max-width: 520px; margin: 0 auto; font-style: italic; }
+    .divider-line { width: 100%; max-width: 680px; margin: 0 auto; height: 1px; background: linear-gradient(90deg, transparent, var(--coral), var(--pink), var(--purple), var(--coral), transparent); opacity: .3; }
 
     /* Photo */
-    .foto-pareja {
-      width: 100%;
-      max-width: 460px;
-      border-radius: 4px;
-      margin: 0 auto 1rem;
-      display: block;
-      box-shadow: 0 12px 50px rgba(107, 45, 78, .18);
-      border: 6px solid #fff;
-      outline: 1px solid rgba(107, 45, 78, .15);
-    }
-
-    .itinerario-img {
-      width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
-      display: block;
-      border-radius: 4px;
-    }
+    .foto-pareja { width: 100%; max-width: 460px; border-radius: 4px; margin: 0 auto 1rem; display: block; box-shadow: 0 12px 50px rgba(107,45,78,.18); border: 6px solid #fff; outline: 1px solid rgba(107,45,78,.15); }
+    .itinerario-img { width: 100%; max-width: 360px; margin: 0 auto; display: block; border-radius: 4px; }
 
     /* Lugares */
-    .lugares-wrap {
-      background: linear-gradient(180deg, var(--cream2), var(--cream));
-    }
-
-    .lugar-bloque {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-      text-align: center;
-      border-bottom: 1px solid rgba(107, 45, 78, .1);
-    }
-
-    .lugar-titulo {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(2rem, 6vw, 3rem);
-      color: var(--burgundy);
-      margin-bottom: .5rem;
-    }
-
-    .lugar-icon-img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-      margin: 0 auto .8rem;
-      display: block;
-      filter: sepia(.4) saturate(.7) hue-rotate(300deg);
-    }
-
-    .lugar-info {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
-      color: var(--gray);
-      line-height: 2;
-      margin-bottom: 1.3rem;
-    }
-
-    .btn-maps {
-      display: inline-block;
-      padding: .7rem 2.2rem;
-      background: var(--burgundy);
-      color: #fff;
-      font-size: .62rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 30px;
-      font-family: 'Jost', sans-serif;
-      transition: background .2s, transform .15s;
-    }
-
-    .btn-maps:hover {
-      background: var(--orange);
-      transform: translateY(-2px);
-    }
+    .lugares-wrap { background: linear-gradient(180deg, var(--cream2), var(--cream)); }
+    .lugar-bloque { max-width: 480px; margin: 0 auto; padding: 3rem 1.5rem; text-align: center; border-bottom: 1px solid rgba(107,45,78,.1); }
+    .lugar-titulo { font-family: 'Dancing Script', cursive; font-size: clamp(2rem, 6vw, 3rem); color: var(--burgundy); margin-bottom: .5rem; }
+    .lugar-icon-img { width: 60px; height: 60px; object-fit: contain; margin: 0 auto .8rem; display: block; filter: sepia(.4) saturate(.7) hue-rotate(300deg); }
+    .lugar-info { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--gray); line-height: 2; margin-bottom: 1.3rem; }
+    .btn-maps { display: inline-block; padding: .7rem 2.2rem; background: var(--burgundy); color: #fff; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; text-decoration: none; border-radius: 30px; font-family: 'Jost', sans-serif; transition: background .2s, transform .15s; }
+    .btn-maps:hover { background: var(--orange); transform: translateY(-2px); }
 
     /* Versiculo */
-    .versiculo-wrap {
-      background: linear-gradient(135deg, var(--burgundy) 0%, #4A1830 100%);
-      padding: 4rem 1.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .versiculo-wrap::before {
-      content: '\201C';
-      position: absolute;
-      top: -3rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Playfair Display', serif;
-      font-size: 18rem;
-      color: rgba(255, 255, 255, .04);
-      pointer-events: none;
-    }
-
-    .versiculo-line {
-      width: 120px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(232, 96, 28, .5), transparent);
-      margin: 0 auto 1.5rem;
-    }
-
-    .versiculo-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: rgba(255, 255, 255, .85);
-      line-height: 2;
-      max-width: 500px;
-      margin: 0 auto 1rem;
-    }
-
-    .versiculo-ref {
-      font-size: .6rem;
-      letter-spacing: .35em;
-      text-transform: uppercase;
-      color: var(--coral);
-    }
+    .versiculo-wrap { background: linear-gradient(135deg, var(--burgundy) 0%, #4A1830 100%); padding: 4rem 1.5rem; text-align: center; position: relative; overflow: hidden; }
+    .versiculo-wrap::before { content: '\201C'; position: absolute; top: -3rem; left: 50%; transform: translateX(-50%); font-family: 'Playfair Display', serif; font-size: 18rem; color: rgba(255,255,255,.04); pointer-events: none; }
+    .versiculo-line { width: 120px; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,96,28,.5), transparent); margin: 0 auto 1.5rem; }
+    .versiculo-text { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1rem, 2.5vw, 1.2rem); color: rgba(255,255,255,.85); line-height: 2; max-width: 500px; margin: 0 auto 1rem; }
+    .versiculo-ref { font-size: .6rem; letter-spacing: .35em; text-transform: uppercase; color: var(--coral); }
 
     /* Galeria */
-    .galeria-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 6px;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 1.5rem 1.5rem;
-    }
-
-    .galeria-item {
-      aspect-ratio: 1/1;
-      overflow: hidden;
-      border-radius: 4px;
-      cursor: pointer;
-      background: var(--cream2);
-    }
-
-    .galeria-item.wide {
-      grid-column: span 2;
-      aspect-ratio: 2/1;
-    }
-
-    .galeria-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .4s;
-      display: block;
-    }
-
-    .galeria-item:hover img {
-      transform: scale(1.07);
-    }
-
-    .lb {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(20, 8, 10, .95);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lb.open {
-      display: flex;
-    }
-
-    .lb img {
-      max-width: 96%;
-      max-height: 92svh;
-      object-fit: contain;
-    }
-
-    .lb-close {
-      position: absolute;
-      top: 1rem;
-      right: 1.2rem;
-      color: var(--coral);
-      font-size: 2.2rem;
-      cursor: pointer;
-      background: none;
-      border: none;
-    }
+    .galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-width: 680px; margin: 0 auto; padding: 0 1.5rem 1.5rem; }
+    .galeria-item { aspect-ratio: 1/1; overflow: hidden; border-radius: 4px; cursor: pointer; background: var(--cream2); }
+    .galeria-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+    .galeria-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; display: block; }
+    .galeria-item:hover img { transform: scale(1.07); }
+    .lb { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(20,8,10,.95); align-items: center; justify-content: center; }
+    .lb.open { display: flex; }
+    .lb img { max-width: 96%; max-height: 92svh; object-fit: contain; }
+    .lb-close { position: absolute; top: 1rem; right: 1.2rem; color: var(--coral); font-size: 2.2rem; cursor: pointer; background: none; border: none; }
 
     /* Fiesta */
-    .fiesta-wrap {
-      background: var(--cream2);
-      padding: 1.5rem;
-    }
-
-    .fiesta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-
-    @media(max-width:580px) {
-      .fiesta-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .fiesta-item {
-      background: #fff;
-      border: 1px solid rgba(107, 45, 78, .15);
-      border-radius: 4px;
-      padding: 2rem 1.2rem;
-      text-align: center;
-    }
-
-    .fiesta-icon {
-      width: 55px;
-      height: 55px;
-      object-fit: contain;
-      margin: 0 auto .8rem;
-      display: block;
-      filter: sepia(.3) saturate(.8) hue-rotate(290deg);
-    }
-
-    .fiesta-titulo {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.4rem;
-      color: var(--burgundy);
-      margin-bottom: 1rem;
-    }
-
-    .fiesta-texto {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: .95rem;
-      color: var(--gray);
-      line-height: 1.9;
-    }
+    .fiesta-wrap { background: var(--cream2); padding: 1.5rem; }
+    .fiesta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 500px; margin: 0 auto; }
+    @media(max-width:580px) { .fiesta-grid { grid-template-columns: 1fr; } }
+    .fiesta-item { background: #fff; border: 1px solid rgba(107,45,78,.15); border-radius: 4px; padding: 2rem 1.2rem; text-align: center; }
+    .fiesta-icon { width: 55px; height: 55px; object-fit: contain; margin: 0 auto .8rem; display: block; filter: sepia(.3) saturate(.8) hue-rotate(290deg); }
+    .fiesta-titulo { font-family: 'Dancing Script', cursive; font-size: 1.4rem; color: var(--burgundy); margin-bottom: 1rem; }
+    .fiesta-texto { font-family: 'Cormorant Garamond', serif; font-size: .95rem; color: var(--gray); line-height: 1.9; }
 
     /* Hashtag */
-    .hashtag-wrap {
-      background: linear-gradient(135deg, var(--burgundy), #4A1830);
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
-
-    .hashtag-label {
-      font-size: .58rem;
-      letter-spacing: .4em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: .5rem;
-    }
-
-    .hashtag {
-      font-family: 'Dancing Script', cursive;
-      font-size: clamp(2.5rem, 9vw, 5rem);
-      color: #fff;
-      display: block;
-      margin: .5rem 0;
-    }
-
-    .hashtag-sub {
-      font-size: .8rem;
-      color: rgba(255, 255, 255, .5);
-      line-height: 1.9;
-      max-width: 380px;
-      margin: 0 auto;
-    }
+    .hashtag-wrap { background: linear-gradient(135deg, var(--burgundy), #4A1830); padding: 3rem 1.5rem; text-align: center; }
+    .hashtag-label { font-size: .58rem; letter-spacing: .4em; text-transform: uppercase; color: var(--coral); margin-bottom: .5rem; }
+    .hashtag { font-family: 'Dancing Script', cursive; font-size: clamp(2.5rem, 9vw, 5rem); color: #fff; display: block; margin: .5rem 0; }
+    .hashtag-sub { font-size: .8rem; color: rgba(255,255,255,.5); line-height: 1.9; max-width: 380px; margin: 0 auto; }
 
     /* Recos */
-    .reco-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    @media(max-width:460px) {
-      .reco-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .reco-card {
-      background: #fff;
-      border: 1px solid rgba(107, 45, 78, .15);
-      border-radius: 4px;
-      padding: 2rem 1.2rem;
-      text-align: center;
-    }
-
-    .reco-icon {
-      width: 55px;
-      height: 55px;
-      object-fit: contain;
-      margin: 0 auto .8rem;
-      display: block;
-      filter: sepia(.3) saturate(.8) hue-rotate(290deg);
-    }
-
-    .reco-titulo {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.3rem;
-      color: var(--burgundy);
-      margin-bottom: .5rem;
-    }
-
-    .reco-texto {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: .95rem;
-      color: var(--gray);
-      line-height: 1.85;
-    }
+    .reco-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 600px; margin: 0 auto; }
+    @media(max-width:460px) { .reco-grid { grid-template-columns: 1fr; } }
+    .reco-card { background: #fff; border: 1px solid rgba(107,45,78,.15); border-radius: 4px; padding: 2rem 1.2rem; text-align: center; }
+    .reco-icon { width: 55px; height: 55px; object-fit: contain; margin: 0 auto .8rem; display: block; filter: sepia(.3) saturate(.8) hue-rotate(290deg); }
+    .reco-titulo { font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: var(--burgundy); margin-bottom: .5rem; }
+    .reco-texto { font-family: 'Cormorant Garamond', serif; font-size: .95rem; color: var(--gray); line-height: 1.85; }
 
     /* RSVP */
-    .rsvp-wrap {
-      background: linear-gradient(160deg, var(--burgundy) 0%, #4A1830 100%);
-      padding: 5rem 1.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+    .rsvp-wrap { background: linear-gradient(160deg, var(--burgundy) 0%, #4A1830 100%); padding: 5rem 1.5rem; text-align: center; position: relative; overflow: hidden; }
+    .rsvp-wrap::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--orange), var(--pink), var(--purple), var(--green2), var(--yellow)); }
+    .rsvp-form { max-width: 480px; margin: 0 auto; text-align: left; }
+    .rsvp-field { margin-bottom: 1.3rem; }
+    .rsvp-field label { display: block; font-size: .58rem; letter-spacing: .28em; text-transform: uppercase; color: var(--coral); margin-bottom: .45rem; }
+    .rsvp-field input, .rsvp-field select, .rsvp-field textarea { width: 100%; padding: .75rem 1rem; background: rgba(255,255,255,.08); border: 1px solid rgba(232,96,28,.3); border-radius: 4px; color: rgba(255,255,255,.9); font-family: 'Jost', sans-serif; font-size: .88rem; font-weight: 300; outline: none; transition: border-color .2s, background .2s; }
+    .rsvp-field input::placeholder, .rsvp-field textarea::placeholder { color: rgba(255,255,255,.3); }
+    .rsvp-field input:focus, .rsvp-field select:focus, .rsvp-field textarea:focus { border-color: var(--orange); background: rgba(255,255,255,.12); }
+    .rsvp-field select { appearance: none; cursor: pointer; }
+    .rsvp-field select option { background: #3A1020; color: #fff; }
+    .rsvp-field textarea { resize: vertical; min-height: 80px; }
+    .btn-rsvp { width: 100%; padding: 1rem 2rem; background: var(--orange); color: #fff; border: none; border-radius: 30px; font-family: 'Jost', sans-serif; font-size: .68rem; font-weight: 500; letter-spacing: .28em; text-transform: uppercase; cursor: pointer; transition: background .2s, transform .15s; margin-top: .5rem; }
+    .btn-rsvp:hover { background: var(--coral); transform: translateY(-2px); }
+    .btn-rsvp:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 
-    .rsvp-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--orange), var(--pink), var(--purple), var(--green2), var(--yellow));
-    }
+    footer { background: #1A0810; padding: 2rem 1rem; text-align: center; }
+    footer p { font-size: .58rem; letter-spacing: .3em; text-transform: uppercase; color: rgba(232,96,28,.3); }
 
-    .rsvp-form {
-      max-width: 480px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .rsvp-field {
-      margin-bottom: 1.3rem;
-    }
-
-    .rsvp-field label {
-      display: block;
-      font-size: .58rem;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: var(--coral);
-      margin-bottom: .45rem;
-    }
-
-    .rsvp-field input,
-    .rsvp-field select,
-    .rsvp-field textarea {
-      width: 100%;
-      padding: .75rem 1rem;
-      background: rgba(255, 255, 255, .08);
-      border: 1px solid rgba(232, 96, 28, .3);
-      border-radius: 4px;
-      color: rgba(255, 255, 255, .9);
-      font-family: 'Jost', sans-serif;
-      font-size: .88rem;
-      font-weight: 300;
-      outline: none;
-      transition: border-color .2s, background .2s;
-    }
-
-    .rsvp-field input::placeholder,
-    .rsvp-field textarea::placeholder {
-      color: rgba(255, 255, 255, .3);
-    }
-
-    .rsvp-field input:focus,
-    .rsvp-field select:focus,
-    .rsvp-field textarea:focus {
-      border-color: var(--orange);
-      background: rgba(255, 255, 255, .12);
-    }
-
-    .rsvp-field select {
-      appearance: none;
-      cursor: pointer;
-    }
-
-    .rsvp-field select option {
-      background: #3A1020;
-      color: #fff;
-    }
-
-    .rsvp-field textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .btn-rsvp {
-      width: 100%;
-      padding: 1rem 2rem;
-      background: var(--orange);
-      color: #fff;
-      border: none;
-      border-radius: 30px;
-      font-family: 'Jost', sans-serif;
-      font-size: .68rem;
-      font-weight: 500;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background .2s, transform .15s;
-      margin-top: .5rem;
-    }
-
-    .btn-rsvp:hover {
-      background: var(--coral);
-      transform: translateY(-2px);
-    }
-
-    .btn-rsvp:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    footer {
-      background: #1A0810;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    footer p {
-      font-size: .58rem;
-      letter-spacing: .3em;
-      text-transform: uppercase;
-      color: rgba(232, 96, 28, .3);
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity .7s ease, transform .7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
-
 <body>
-  <div id="root"></div>
-  <script type="text/babel">
+<div id="root"></div>
+<script type="text/babel">
 
-    const CONFIG = {
-      nombre1: "Jhon", nombre2: "Natalia",
-      fechaBoda: new Date(2026, 5, 27, 14, 0, 0),
-      fechaDia: "27", fechaMes: "06", fechaAnio: "26",
-      fechaTexto: "Sábado · 27 de Junio de 2026", ciudad: "Barranquilla",
-      mensaje: "El destino nos presentó, y desde entonces caminamos juntos. Dios ha estado presente en nuestra relación, guiando nuestros pasos. Hemos aprendido a permanecer unidos con una misma visión, propósito y amor. Ahora daremos nuestro \"sí\" más importante, y queremos compartirlo con quienes han sido testigos y cómplices de nuestra historia.",
-      versiculo: "\"Y nosotros hemos conocido y creído el amor que Dios tiene para con nosotros. Dios es amor; y el que permanece en amor, permanece en Dios, y Dios en él.\"",
-      versiculoRef: "1 Juan 4:16",
-      fotoPareja: "https://i.ibb.co/LDYSyvt8/IMG-20260305-155710.jpg",
-      fotoItinerario: "https://raw.githubusercontent.com/kalexo-n/Mi_boda-/main/Itinerario.png",
-      iglesiaName: "Parroquia Cristo Rey", iglesiaDir: "Cra 10 # 73E-201 Barranquilla", iglesiaHora: "2:00 PM",
-      iglesiaMap: "https://maps.app.goo.gl/WFsyZmqAYKehaHr68",
-      salonName: "Conjunto campestre Villa Marsella, Villa Sayjome", salonDir: "Kilometro 1 vía Sabanagrande - Polonuevo", salonHora: "5:00 PM",
-      salonMap: "https://maps.app.goo.gl/HyuqUiZsQJowEp3u8",
-      fotos: [
-        { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=700&q=80", wide: true },
-        { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&q=80" },
-        { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80" },
-        { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=80" },
-        { src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=400&q=80" },
-        { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400&q=80" },
-      ],
-      hashtag: "#Jhon&Natalia",
-      dressMujeres: "Vestido largo de un solo tono (No estampados). Se reserva el color blanco.",
-      dressHombres: "Traje formal · Corbatín",
-      fechaLimite: "Antes del 31 de Mayo de 2026",
-      recomendaciones: [
-        { icon: "https://cdn-icons-png.flaticon.com/512/1047/1047349.png", titulo: "Niños: Dulces Sueños", texto: "Amamos a los niños, pero esta celebración es solo para adultos. 🥂" },
-        { icon: "https://cdn-icons-png.flaticon.com/512/2933/2933245.png", titulo: "Puntualidad", texto: "Por favor llegar 15 minutos antes de la ceremonia. ⏰" },
-        { icon: "https://cdn-icons-png.flaticon.com/512/3063/3063822.png", titulo: "Momento Especial", texto: "Durante la ceremonia guardemos los celulares y vivamos el momento. 🤍" },
-        { icon: "https://cdn-icons-png.flaticon.com/512/1048/1048313.png", titulo: "Estacionamiento", texto: "Hay estacionamiento disponible en el lugar. 🚗" },
-      ],
-    };
+const CONFIG = {
+  nombre1: "Jhon", nombre2: "Natalia",
+  fechaBoda: new Date(2026, 5, 27, 14, 0, 0),
+  fechaDia: "27", fechaMes: "06", fechaAnio: "26",
+  fechaTexto: "Sábado · 27 de Junio de 2026", ciudad: "Barranquilla",
+  mensaje: "El destino nos presentó, y desde entonces caminamos juntos. Dios ha estado presente en nuestra relación, guiando nuestros pasos. Hemos aprendido a permanecer unidos con una misma visión, propósito y amor. Ahora daremos nuestro \"sí\" más importante, y queremos compartirlo con quienes han sido testigos y cómplices de nuestra historia.",
+  versiculo: "\"Y nosotros hemos conocido y creído el amor que Dios tiene para con nosotros. Dios es amor; y el que permanece en amor, permanece en Dios, y Dios en él.\"",
+  versiculoRef: "1 Juan 4:16",
+  fotoPareja: "https://i.ibb.co/LDYSyvt8/IMG-20260305-155710.jpg",
+  fotoItinerario: "https://raw.githubusercontent.com/kalexo-n/Mi_boda-/main/Itinerario.png",
+  iglesiaName: "Parroquia Cristo Rey", iglesiaDir: "Cra 10 # 73E-201 Barranquilla", iglesiaHora: "2:00 PM",
+  iglesiaMap: "https://maps.app.goo.gl/WFsyZmqAYKehaHr68",
+  salonName: "Conjunto campestre Villa Marsella, Villa Sayjome", salonDir: "Kilometro 1 vía Sabanagrande - Polonuevo", salonHora: "5:00 PM",
+  salonMap: "https://maps.app.goo.gl/HyuqUiZsQJowEp3u8",
+  fotos: [
+    { src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=700&q=80", wide: true },
+    { src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400&q=80" },
+    { src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80" },
+    { src: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400&q=80" },
+    { src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=400&q=80" },
+    { src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=400&q=80" },
+  ],
+  hashtag: "#Jhon&Natalia",
+  dressMujeres: "Vestido largo de un solo tono (No estampados). Se reserva el color blanco.",
+  dressHombres: "Traje formal · Corbatín",
+  fechaLimite: "Antes del 31 de Mayo de 2026",
+  recomendaciones: [
+    { icon: "https://cdn-icons-png.flaticon.com/512/1047/1047349.png", titulo: "Niños: Dulces Sueños", texto: "Amamos a los niños, pero esta celebración es solo para adultos. 🥂" },
+    { icon: "https://cdn-icons-png.flaticon.com/512/2933/2933245.png", titulo: "Puntualidad", texto: "Por favor llegar 15 minutos antes de la ceremonia. ⏰" },
+    { icon: "https://cdn-icons-png.flaticon.com/512/3063/3063822.png", titulo: "Momento Especial", texto: "Durante la ceremonia guardemos los celulares y vivamos el momento. 🤍" },
+    { icon: "https://cdn-icons-png.flaticon.com/512/1048/1048313.png", titulo: "Estacionamiento", texto: "Hay estacionamiento disponible en el lugar. 🚗" },
+  ],
+};
 
-    /* ── Corner botanical SVG ── */
-    const FloralCorner = ({ className }) => (
-      <svg className={`corner-floral ${className}`} viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10,210 Q70,130 130,85 Q170,58 200,15" fill="none" stroke="#4A7C59" strokeWidth="2.5" strokeLinecap="round" />
-        <path d="M10,210 Q50,165 90,140 Q120,120 145,95" fill="none" stroke="#6B9E6E" strokeWidth="1.5" strokeLinecap="round" />
-        <ellipse cx="80" cy="118" rx="24" ry="9" fill="#4A7C59" opacity=".65" transform="rotate(-42 80 118)" />
-        <ellipse cx="112" cy="98" rx="19" ry="8" fill="#6B9E6E" opacity=".6" transform="rotate(-55 112 98)" />
-        <ellipse cx="145" cy="80" rx="16" ry="7" fill="#4A7C59" opacity=".5" transform="rotate(-30 145 80)" />
-        {/* Big orange poppy */}
-        <ellipse cx="162" cy="60" rx="12" ry="20" fill="#E8601C" opacity=".85" transform="rotate(-15 162 60)" />
-        <ellipse cx="178" cy="52" rx="12" ry="18" fill="#F08060" opacity=".8" transform="rotate(20 178 52)" />
-        <ellipse cx="168" cy="42" rx="11" ry="17" fill="#E8601C" opacity=".8" transform="rotate(-50 168 42)" />
-        <ellipse cx="152" cy="48" rx="11" ry="18" fill="#F4906A" opacity=".75" transform="rotate(35 152 48)" />
-        <circle cx="165" cy="55" r="9" fill="#C8A020" opacity=".95" />
-        {/* Pink flower */}
-        <circle cx="118" cy="68" r="14" fill="#D94070" opacity=".82" />
-        <circle cx="118" cy="68" r="7" fill="#C8A020" opacity=".95" />
-        <ellipse cx="105" cy="62" rx="9" ry="5" fill="#D94070" opacity=".65" transform="rotate(-20 105 62)" />
-        <ellipse cx="131" cy="62" rx="9" ry="5" fill="#9B5EA2" opacity=".65" transform="rotate(20 131 62)" />
-        <ellipse cx="118" cy="55" rx="8" ry="5" fill="#D94070" opacity=".75" />
-        {/* Purple */}
-        <circle cx="188" cy="88" r="11" fill="#9B5EA2" opacity=".8" />
-        <circle cx="188" cy="88" r="5" fill="#C8A020" opacity=".9" />
-        <circle cx="58" cy="162" r="6" fill="#E8601C" opacity=".6" />
-        <circle cx="44" cy="178" r="5" fill="#D94070" opacity=".5" />
-        <circle cx="32" cy="190" r="4" fill="#9B5EA2" opacity=".45" />
-        {/* Lavender sprigs */}
-        <path d="M140,95 Q150,78 158,65" fill="none" stroke="#9B5EA2" strokeWidth="1.2" strokeLinecap="round" />
-        <circle cx="158" cy="65" r="4" fill="#9B5EA2" opacity=".6" />
-        <circle cx="154" cy="72" r="3" fill="#9B5EA2" opacity=".5" />
-        <circle cx="150" cy="79" r="3" fill="#9B5EA2" opacity=".45" />
-      </svg>
-    );
+/* ── Corner botanical SVG ── */
+const FloralCorner = ({ className }) => (
+  <svg className={`corner-floral ${className}`} viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10,210 Q70,130 130,85 Q170,58 200,15" fill="none" stroke="#4A7C59" strokeWidth="2.5" strokeLinecap="round"/>
+    <path d="M10,210 Q50,165 90,140 Q120,120 145,95" fill="none" stroke="#6B9E6E" strokeWidth="1.5" strokeLinecap="round"/>
+    <ellipse cx="80" cy="118" rx="24" ry="9" fill="#4A7C59" opacity=".65" transform="rotate(-42 80 118)"/>
+    <ellipse cx="112" cy="98" rx="19" ry="8" fill="#6B9E6E" opacity=".6" transform="rotate(-55 112 98)"/>
+    <ellipse cx="145" cy="80" rx="16" ry="7" fill="#4A7C59" opacity=".5" transform="rotate(-30 145 80)"/>
+    {/* Big orange poppy */}
+    <ellipse cx="162" cy="60" rx="12" ry="20" fill="#E8601C" opacity=".85" transform="rotate(-15 162 60)"/>
+    <ellipse cx="178" cy="52" rx="12" ry="18" fill="#F08060" opacity=".8" transform="rotate(20 178 52)"/>
+    <ellipse cx="168" cy="42" rx="11" ry="17" fill="#E8601C" opacity=".8" transform="rotate(-50 168 42)"/>
+    <ellipse cx="152" cy="48" rx="11" ry="18" fill="#F4906A" opacity=".75" transform="rotate(35 152 48)"/>
+    <circle cx="165" cy="55" r="9" fill="#C8A020" opacity=".95"/>
+    {/* Pink flower */}
+    <circle cx="118" cy="68" r="14" fill="#D94070" opacity=".82"/>
+    <circle cx="118" cy="68" r="7" fill="#C8A020" opacity=".95"/>
+    <ellipse cx="105" cy="62" rx="9" ry="5" fill="#D94070" opacity=".65" transform="rotate(-20 105 62)"/>
+    <ellipse cx="131" cy="62" rx="9" ry="5" fill="#9B5EA2" opacity=".65" transform="rotate(20 131 62)"/>
+    <ellipse cx="118" cy="55" rx="8" ry="5" fill="#D94070" opacity=".75"/>
+    {/* Purple */}
+    <circle cx="188" cy="88" r="11" fill="#9B5EA2" opacity=".8"/>
+    <circle cx="188" cy="88" r="5" fill="#C8A020" opacity=".9"/>
+    <circle cx="58" cy="162" r="6" fill="#E8601C" opacity=".6"/>
+    <circle cx="44" cy="178" r="5" fill="#D94070" opacity=".5"/>
+    <circle cx="32" cy="190" r="4" fill="#9B5EA2" opacity=".45"/>
+    {/* Lavender sprigs */}
+    <path d="M140,95 Q150,78 158,65" fill="none" stroke="#9B5EA2" strokeWidth="1.2" strokeLinecap="round"/>
+    <circle cx="158" cy="65" r="4" fill="#9B5EA2" opacity=".6"/>
+    <circle cx="154" cy="72" r="3" fill="#9B5EA2" opacity=".5"/>
+    <circle cx="150" cy="79" r="3" fill="#9B5EA2" opacity=".45"/>
+  </svg>
+);
 
-    /* ── Flowers overlapping the date numbers ── */
-    const FloralNumbers = () => (
-      <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 3 }} viewBox="0 0 380 480" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-        <path d="M75,470 Q140,340 190,210 Q230,110 290,65" fill="none" stroke="#4A7C59" strokeWidth="3" strokeLinecap="round" opacity=".7" />
-        <path d="M115,470 Q170,370 210,270 Q255,170 310,105" fill="none" stroke="#6B9E6E" strokeWidth="2" strokeLinecap="round" opacity=".55" />
-        <path d="M55,470 Q85,375 135,305 Q170,240 155,155" fill="none" stroke="#4A7C59" strokeWidth="1.8" strokeLinecap="round" opacity=".5" />
-        <ellipse cx="155" cy="325" rx="34" ry="12" fill="#4A7C59" opacity=".55" transform="rotate(-45 155 325)" />
-        <ellipse cx="235" cy="255" rx="27" ry="10" fill="#6B9E6E" opacity=".5" transform="rotate(-30 235 255)" />
-        <ellipse cx="125" cy="228" rx="24" ry="9" fill="#4A7C59" opacity=".45" transform="rotate(-58 125 228)" />
-        <ellipse cx="265" cy="185" rx="21" ry="8" fill="#6B9E6E" opacity=".45" transform="rotate(-22 265 185)" />
-        <ellipse cx="178" cy="145" rx="19" ry="7" fill="#4A7C59" opacity=".5" transform="rotate(-48 178 145)" />
-        {/* Big orange poppy left */}
-        <ellipse cx="88" cy="262" rx="14" ry="24" fill="#E8601C" opacity=".9" transform="rotate(-10 88 262)" />
-        <ellipse cx="110" cy="250" rx="14" ry="22" fill="#F08060" opacity=".85" transform="rotate(25 110 250)" />
-        <ellipse cx="98" cy="238" rx="13" ry="22" fill="#E8601C" opacity=".85" transform="rotate(-45 98 238)" />
-        <ellipse cx="76" cy="248" rx="13" ry="22" fill="#F4906A" opacity=".8" transform="rotate(40 76 248)" />
-        <circle cx="94" cy="255" r="14" fill="#C8A020" opacity="1" />
-        {/* Coral poppy right */}
-        <ellipse cx="290" cy="338" rx="12" ry="20" fill="#F08060" opacity=".88" transform="rotate(-8 290 338)" />
-        <ellipse cx="308" cy="328" rx="12" ry="19" fill="#E8601C" opacity=".83" transform="rotate(22 308 328)" />
-        <ellipse cx="298" cy="316" rx="11" ry="19" fill="#F08060" opacity=".83" transform="rotate(-42 298 316)" />
-        <ellipse cx="280" cy="325" rx="11" ry="19" fill="#F4906A" opacity=".78" transform="rotate(38 280 325)" />
-        <circle cx="294" cy="332" r="12" fill="#C8A020" opacity="1" />
-        {/* Pink flower center */}
-        <circle cx="215" cy="198" r="22" fill="#D94070" opacity=".85" />
-        <circle cx="215" cy="198" r="11" fill="#C8A020" opacity="1" />
-        <ellipse cx="195" cy="190" rx="13" ry="7" fill="#D94070" opacity=".75" transform="rotate(-18 195 190)" />
-        <ellipse cx="235" cy="190" rx="13" ry="7" fill="#9B5EA2" opacity=".7" transform="rotate(18 235 190)" />
-        <ellipse cx="215" cy="178" rx="12" ry="7" fill="#D94070" opacity=".8" />
-        <ellipse cx="215" cy="218" rx="12" ry="7" fill="#D94070" opacity=".75" />
-        {/* Purple flower top */}
-        <circle cx="272" cy="98" r="19" fill="#9B5EA2" opacity=".82" />
-        <circle cx="272" cy="98" r="9" fill="#C8A020" opacity="1" />
-        <ellipse cx="255" cy="91" rx="11" ry="6" fill="#9B5EA2" opacity=".7" transform="rotate(-22 255 91)" />
-        <ellipse cx="289" cy="91" rx="11" ry="6" fill="#D94070" opacity=".65" transform="rotate(22 289 91)" />
-        <ellipse cx="272" cy="80" rx="10" ry="6" fill="#9B5EA2" opacity=".75" />
-        <ellipse cx="272" cy="116" rx="10" ry="6" fill="#D94070" opacity=".7" />
-        {/* Small orange top */}
-        <circle cx="148" cy="78" r="15" fill="#E8601C" opacity=".8" />
-        <circle cx="148" cy="78" r="8" fill="#C8A020" opacity=".95" />
-        {/* Extra small flowers */}
-        <circle cx="335" cy="238" r="13" fill="#F08060" opacity=".75" />
-        <circle cx="335" cy="238" r="6" fill="#C8A020" opacity=".9" />
-        <circle cx="55" cy="388" r="11" fill="#D94070" opacity=".7" />
-        <circle cx="55" cy="388" r="5" fill="#C8A020" opacity=".85" />
-        <circle cx="345" cy="415" r="9" fill="#9B5EA2" opacity=".7" />
-        {/* Lavender sprigs */}
-        <path d="M195,198 L190,168 L195,148 L200,168 Z" fill="#9B5EA2" opacity=".35" />
-        <path d="M205,208 L200,178 L205,158 L210,178 Z" fill="#9B5EA2" opacity=".3" />
-        <circle cx="195" cy="148" r="5" fill="#9B5EA2" opacity=".65" />
-        <circle cx="205" cy="158" r="4" fill="#9B5EA2" opacity=".6" />
-        {/* Yellow wildflowers */}
-        <circle cx="50" cy="308" r="8" fill="#C8A020" opacity=".7" />
-        <circle cx="335" cy="145" r="6" fill="#C8A020" opacity=".65" />
-      </svg>
-    );
+/* ── Flowers overlapping the date numbers ── */
+const FloralNumbers = () => (
+  <svg style={{position:'absolute',inset:0,width:'100%',height:'100%',pointerEvents:'none',zIndex:3}} viewBox="0 0 380 480" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+    <path d="M75,470 Q140,340 190,210 Q230,110 290,65" fill="none" stroke="#4A7C59" strokeWidth="3" strokeLinecap="round" opacity=".7"/>
+    <path d="M115,470 Q170,370 210,270 Q255,170 310,105" fill="none" stroke="#6B9E6E" strokeWidth="2" strokeLinecap="round" opacity=".55"/>
+    <path d="M55,470 Q85,375 135,305 Q170,240 155,155" fill="none" stroke="#4A7C59" strokeWidth="1.8" strokeLinecap="round" opacity=".5"/>
+    <ellipse cx="155" cy="325" rx="34" ry="12" fill="#4A7C59" opacity=".55" transform="rotate(-45 155 325)"/>
+    <ellipse cx="235" cy="255" rx="27" ry="10" fill="#6B9E6E" opacity=".5" transform="rotate(-30 235 255)"/>
+    <ellipse cx="125" cy="228" rx="24" ry="9" fill="#4A7C59" opacity=".45" transform="rotate(-58 125 228)"/>
+    <ellipse cx="265" cy="185" rx="21" ry="8" fill="#6B9E6E" opacity=".45" transform="rotate(-22 265 185)"/>
+    <ellipse cx="178" cy="145" rx="19" ry="7" fill="#4A7C59" opacity=".5" transform="rotate(-48 178 145)"/>
+    {/* Big orange poppy left */}
+    <ellipse cx="88" cy="262" rx="14" ry="24" fill="#E8601C" opacity=".9" transform="rotate(-10 88 262)"/>
+    <ellipse cx="110" cy="250" rx="14" ry="22" fill="#F08060" opacity=".85" transform="rotate(25 110 250)"/>
+    <ellipse cx="98" cy="238" rx="13" ry="22" fill="#E8601C" opacity=".85" transform="rotate(-45 98 238)"/>
+    <ellipse cx="76" cy="248" rx="13" ry="22" fill="#F4906A" opacity=".8" transform="rotate(40 76 248)"/>
+    <circle cx="94" cy="255" r="14" fill="#C8A020" opacity="1"/>
+    {/* Coral poppy right */}
+    <ellipse cx="290" cy="338" rx="12" ry="20" fill="#F08060" opacity=".88" transform="rotate(-8 290 338)"/>
+    <ellipse cx="308" cy="328" rx="12" ry="19" fill="#E8601C" opacity=".83" transform="rotate(22 308 328)"/>
+    <ellipse cx="298" cy="316" rx="11" ry="19" fill="#F08060" opacity=".83" transform="rotate(-42 298 316)"/>
+    <ellipse cx="280" cy="325" rx="11" ry="19" fill="#F4906A" opacity=".78" transform="rotate(38 280 325)"/>
+    <circle cx="294" cy="332" r="12" fill="#C8A020" opacity="1"/>
+    {/* Pink flower center */}
+    <circle cx="215" cy="198" r="22" fill="#D94070" opacity=".85"/>
+    <circle cx="215" cy="198" r="11" fill="#C8A020" opacity="1"/>
+    <ellipse cx="195" cy="190" rx="13" ry="7" fill="#D94070" opacity=".75" transform="rotate(-18 195 190)"/>
+    <ellipse cx="235" cy="190" rx="13" ry="7" fill="#9B5EA2" opacity=".7" transform="rotate(18 235 190)"/>
+    <ellipse cx="215" cy="178" rx="12" ry="7" fill="#D94070" opacity=".8"/>
+    <ellipse cx="215" cy="218" rx="12" ry="7" fill="#D94070" opacity=".75"/>
+    {/* Purple flower top */}
+    <circle cx="272" cy="98" r="19" fill="#9B5EA2" opacity=".82"/>
+    <circle cx="272" cy="98" r="9" fill="#C8A020" opacity="1"/>
+    <ellipse cx="255" cy="91" rx="11" ry="6" fill="#9B5EA2" opacity=".7" transform="rotate(-22 255 91)"/>
+    <ellipse cx="289" cy="91" rx="11" ry="6" fill="#D94070" opacity=".65" transform="rotate(22 289 91)"/>
+    <ellipse cx="272" cy="80" rx="10" ry="6" fill="#9B5EA2" opacity=".75"/>
+    <ellipse cx="272" cy="116" rx="10" ry="6" fill="#D94070" opacity=".7"/>
+    {/* Small orange top */}
+    <circle cx="148" cy="78" r="15" fill="#E8601C" opacity=".8"/>
+    <circle cx="148" cy="78" r="8" fill="#C8A020" opacity=".95"/>
+    {/* Extra small flowers */}
+    <circle cx="335" cy="238" r="13" fill="#F08060" opacity=".75"/>
+    <circle cx="335" cy="238" r="6" fill="#C8A020" opacity=".9"/>
+    <circle cx="55" cy="388" r="11" fill="#D94070" opacity=".7"/>
+    <circle cx="55" cy="388" r="5" fill="#C8A020" opacity=".85"/>
+    <circle cx="345" cy="415" r="9" fill="#9B5EA2" opacity=".7"/>
+    {/* Lavender sprigs */}
+    <path d="M195,198 L190,168 L195,148 L200,168 Z" fill="#9B5EA2" opacity=".35"/>
+    <path d="M205,208 L200,178 L205,158 L210,178 Z" fill="#9B5EA2" opacity=".3"/>
+    <circle cx="195" cy="148" r="5" fill="#9B5EA2" opacity=".65"/>
+    <circle cx="205" cy="158" r="4" fill="#9B5EA2" opacity=".6"/>
+    {/* Yellow wildflowers */}
+    <circle cx="50" cy="308" r="8" fill="#C8A020" opacity=".7"/>
+    <circle cx="335" cy="145" r="6" fill="#C8A020" opacity=".65"/>
+  </svg>
+);
 
-    const GoldLine = () => <div className="divider-line"></div>;
+const GoldLine = () => <div className="divider-line"></div>;
 
-    const Hero = () => (
-      <div className="hero">
-        <FloralCorner className="tl" />
-        <FloralCorner className="tr" />
-        <FloralCorner className="bl" />
-        <FloralCorner className="br" />
-        <p className="hero-tag">Con la bendición de Dios y nuestras familias</p>
-        <div className="fecha-wrap">
-          <div className="fecha-stack">
-            <span className="fecha-num">{CONFIG.fechaDia}</span>
-            <span className="fecha-num">{CONFIG.fechaMes}</span>
-            <span className="fecha-num">{CONFIG.fechaAnio}</span>
-          </div>
-          <FloralNumbers />
-        </div>
-        <div className="wedding-of">La Boda de</div>
-        <div className="hero-names">{CONFIG.nombre1} & {CONFIG.nombre2}</div>
-        <div className="hero-date-text">{CONFIG.fechaTexto} · {CONFIG.ciudad}</div>
+const Hero = () => (
+  <div className="hero">
+    <FloralCorner className="tl" />
+    <FloralCorner className="tr" />
+    <FloralCorner className="bl" />
+    <FloralCorner className="br" />
+    <p className="hero-tag">Con la bendición de Dios y nuestras familias</p>
+    <div className="fecha-wrap">
+      <div className="fecha-stack">
+        <span className="fecha-num">{CONFIG.fechaDia}</span>
+        <span className="fecha-num">{CONFIG.fechaMes}</span>
+        <span className="fecha-num">{CONFIG.fechaAnio}</span>
       </div>
-    );
+      <FloralNumbers />
+    </div>
+    <div className="wedding-of">La Boda de</div>
+    <div className="hero-names">{CONFIG.nombre1} & {CONFIG.nombre2}</div>
+    <div className="hero-date-text">{CONFIG.fechaTexto} · {CONFIG.ciudad}</div>
+  </div>
+);
 
-    const Countdown = () => {
-      const pad = n => String(n).padStart(2, '0');
-      const calc = () => {
-        const d = CONFIG.fechaBoda - new Date();
-        if (d <= 0) return { d: '00', h: '00', m: '00', s: '00' };
-        return { d: pad(Math.floor(d / 86400000)), h: pad(Math.floor((d % 86400000) / 3600000)), m: pad(Math.floor((d % 3600000) / 60000)), s: pad(Math.floor((d % 60000) / 1000)) };
-      };
-      const [t, setT] = React.useState(calc);
-      React.useEffect(() => { const id = setInterval(() => setT(calc()), 1000); return () => clearInterval(id); }, []);
-      return (
-        <div className="countdown-wrap reveal">
-          <div className="cd-title">Faltan...</div>
-          <div className="countdown">
-            <div className="c-unit"><span className="c-num">{t.d}</span><span className="c-label">Días</span></div>
-            <div className="c-sep">:</div>
-            <div className="c-unit"><span className="c-num">{t.h}</span><span className="c-label">Horas</span></div>
-            <div className="c-sep">:</div>
-            <div className="c-unit"><span className="c-num">{t.m}</span><span className="c-label">Minutos</span></div>
-            <div className="c-sep">:</div>
-            <div className="c-unit"><span className="c-num">{t.s}</span><span className="c-label">Segundos</span></div>
-          </div>
-        </div>
-      );
-    };
+const Countdown = () => {
+  const pad = n => String(n).padStart(2,'0');
+  const calc = () => {
+    const d = CONFIG.fechaBoda - new Date();
+    if(d<=0) return {d:'00',h:'00',m:'00',s:'00'};
+    return { d:pad(Math.floor(d/86400000)), h:pad(Math.floor((d%86400000)/3600000)), m:pad(Math.floor((d%3600000)/60000)), s:pad(Math.floor((d%60000)/1000)) };
+  };
+  const [t,setT] = React.useState(calc);
+  React.useEffect(()=>{ const id=setInterval(()=>setT(calc()),1000); return ()=>clearInterval(id); },[]);
+  return (
+    <div className="countdown-wrap reveal">
+      <div className="cd-title">Faltan...</div>
+      <div className="countdown">
+        <div className="c-unit"><span className="c-num">{t.d}</span><span className="c-label">Días</span></div>
+        <div className="c-sep">:</div>
+        <div className="c-unit"><span className="c-num">{t.h}</span><span className="c-label">Horas</span></div>
+        <div className="c-sep">:</div>
+        <div className="c-unit"><span className="c-num">{t.m}</span><span className="c-label">Minutos</span></div>
+        <div className="c-sep">:</div>
+        <div className="c-unit"><span className="c-num">{t.s}</span><span className="c-label">Segundos</span></div>
+      </div>
+    </div>
+  );
+};
 
-    const Mensaje = () => (
-      <div className="section reveal">
+const Mensaje = () => (
+  <div className="section reveal">
+    <p className="s-tag">✦ &nbsp; ✦</p>
+    <h1 className="s-title">¡Nos Casamos!</h1>
+    <div className="s-divider"><span>🌸</span></div>
+    <p className="s-text">{CONFIG.mensaje}</p>
+  </div>
+);
+
+const FotoPareja = () => (
+  <div className="section reveal" style={{padding:'1rem 1.5rem 3rem'}}>
+    <img className="foto-pareja" src={CONFIG.fotoPareja} alt={`${CONFIG.nombre1} y ${CONFIG.nombre2}`} />
+  </div>
+);
+
+const Itinerario = () => (
+  <div className="section reveal">
+    <p className="s-tag">✦ &nbsp; ✦</p>
+    <h2 className="s-title">Itinerario</h2>
+    <div className="s-divider"><span>🕊️</span></div>
+    <img className="itinerario-img" src={CONFIG.fotoItinerario} alt="Itinerario" style={{filter:'none',border:'none',outline:'none',boxShadow:'none',background:'transparent'}} />
+  </div>
+);
+
+const Lugares = () => (
+  <div className="lugares-wrap">
+    <div className="lugar-bloque reveal">
+      <div className="lugar-titulo">Ceremonia</div>
+      <div className="s-divider" style={{marginBottom:'1.5rem'}}><span>⛪</span></div>
+      <img className="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/1205/1205526.png" alt="Iglesia" />
+      <div className="lugar-info"><strong style={{color:'var(--burgundy)',fontSize:'1.1rem'}}>{CONFIG.iglesiaName}</strong><br/>{CONFIG.iglesiaDir}<br/><strong style={{color:'var(--orange)'}}>{CONFIG.iglesiaHora}</strong></div>
+      <a className="btn-maps" href={CONFIG.iglesiaMap} target="_blank">📍 Cómo Llegar</a>
+    </div>
+    <div className="lugar-bloque reveal">
+      <div className="lugar-titulo">Recepción</div>
+      <div className="s-divider" style={{marginBottom:'1.5rem'}}><span>🥂</span></div>
+      <img className="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/3174/3174804.png" alt="Recepción" />
+      <div className="lugar-info"><strong style={{color:'var(--burgundy)',fontSize:'1.1rem'}}>{CONFIG.salonName}</strong><br/>{CONFIG.salonDir}<br/><strong style={{color:'var(--orange)'}}>{CONFIG.salonHora}</strong></div>
+      <a className="btn-maps" href={CONFIG.salonMap} target="_blank">📍 Cómo Llegar</a>
+    </div>
+  </div>
+);
+
+const Galeria = () => {
+  const [lb,setLb] = React.useState(null);
+  React.useEffect(()=>{ const h=e=>{ if(e.key==='Escape') setLb(null); }; document.addEventListener('keydown',h); return ()=>document.removeEventListener('keydown',h); },[]);
+  React.useEffect(()=>{ document.body.style.overflow=lb?'hidden':''; },[lb]);
+  return (
+    <>
+      <div className="section reveal" style={{paddingBottom:'1.5rem'}}>
         <p className="s-tag">✦ &nbsp; ✦</p>
-        <h1 className="s-title">¡Nos Casamos!</h1>
-        <div className="s-divider"><span>🌸</span></div>
-        <p className="s-text">{CONFIG.mensaje}</p>
+        <h2 className="s-title">Nuestro Amor</h2>
+        <div className="s-divider"><span>💕</span></div>
       </div>
-    );
-
-    const FotoPareja = () => (
-      <div className="section reveal" style={{ padding: '1rem 1.5rem 3rem' }}>
-        <img className="foto-pareja" src={CONFIG.fotoPareja} alt={`${CONFIG.nombre1} y ${CONFIG.nombre2}`} />
-      </div>
-    );
-
-    const Itinerario = () => (
-      <div className="section reveal">
-        <p className="s-tag">✦ &nbsp; ✦</p>
-        <h2 className="s-title">Itinerario</h2>
-        <div className="s-divider"><span>🕊️</span></div>
-        <img className="itinerario-img" src={CONFIG.fotoItinerario} alt="Itinerario" style={{ filter: 'none', border: 'none', outline: 'none', boxShadow: 'none', background: 'transparent' }} />
-      </div>
-    );
-
-    const Lugares = () => (
-      <div className="lugares-wrap">
-        <div className="lugar-bloque reveal">
-          <div className="lugar-titulo">Ceremonia</div>
-          <div className="s-divider" style={{ marginBottom: '1.5rem' }}><span>⛪</span></div>
-          <img className="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/1205/1205526.png" alt="Iglesia" />
-          <div className="lugar-info"><strong style={{ color: 'var(--burgundy)', fontSize: '1.1rem' }}>{CONFIG.iglesiaName}</strong><br />{CONFIG.iglesiaDir}<br /><strong style={{ color: 'var(--orange)' }}>{CONFIG.iglesiaHora}</strong></div>
-          <a className="btn-maps" href={CONFIG.iglesiaMap} target="_blank">📍 Cómo Llegar</a>
-        </div>
-        <div className="lugar-bloque reveal">
-          <div className="lugar-titulo">Recepción</div>
-          <div className="s-divider" style={{ marginBottom: '1.5rem' }}><span>🥂</span></div>
-          <img className="lugar-icon-img" src="https://cdn-icons-png.flaticon.com/512/3174/3174804.png" alt="Recepción" />
-          <div className="lugar-info"><strong style={{ color: 'var(--burgundy)', fontSize: '1.1rem' }}>{CONFIG.salonName}</strong><br />{CONFIG.salonDir}<br /><strong style={{ color: 'var(--orange)' }}>{CONFIG.salonHora}</strong></div>
-          <a className="btn-maps" href={CONFIG.salonMap} target="_blank">📍 Cómo Llegar</a>
-        </div>
-      </div>
-    );
-
-    const Galeria = () => {
-      const [lb, setLb] = React.useState(null);
-      React.useEffect(() => { const h = e => { if (e.key === 'Escape') setLb(null); }; document.addEventListener('keydown', h); return () => document.removeEventListener('keydown', h); }, []);
-      React.useEffect(() => { document.body.style.overflow = lb ? 'hidden' : ''; }, [lb]);
-      return (
-        <>
-          <div className="section reveal" style={{ paddingBottom: '1.5rem' }}>
-            <p className="s-tag">✦ &nbsp; ✦</p>
-            <h2 className="s-title">Nuestro Amor</h2>
-            <div className="s-divider"><span>💕</span></div>
+      <div className="galeria-grid reveal">
+        {CONFIG.fotos.map((f,i)=>(
+          <div key={i} className={`galeria-item${f.wide?' wide':''}`} onClick={()=>setLb(f.src)}>
+            <img src={f.src} alt={`Foto ${i+1}`} />
           </div>
-          <div className="galeria-grid reveal">
-            {CONFIG.fotos.map((f, i) => (
-              <div key={i} className={`galeria-item${f.wide ? ' wide' : ''}`} onClick={() => setLb(f.src)}>
-                <img src={f.src} alt={`Foto ${i + 1}`} />
-              </div>
-            ))}
-          </div>
-          {lb && <div className="lb open" onClick={() => setLb(null)}><button className="lb-close">✕</button><img src={lb} alt="" /></div>}
-        </>
-      );
-    };
-
-    const Versiculo = () => (
-      <div className="versiculo-wrap reveal">
-        <div className="versiculo-line" />
-        <p className="versiculo-text">{CONFIG.versiculo}</p>
-        <p className="versiculo-ref">{CONFIG.versiculoRef}</p>
-        <div className="versiculo-line" style={{ marginTop: '1.5rem' }} />
+        ))}
       </div>
-    );
+      {lb && <div className="lb open" onClick={()=>setLb(null)}><button className="lb-close">✕</button><img src={lb} alt=""/></div>}
+    </>
+  );
+};
 
-    const Fiesta = () => (
-      <>
-        <div className="section reveal" style={{ paddingBottom: '1rem' }}>
-          <p className="s-tag">✦ &nbsp; ✦</p>
-          <h2 className="s-title">Nuestra Fiesta</h2>
-          <div className="s-divider"><span>🎉</span></div>
-          <p className="s-text">Detalles para tener en cuenta el día de la boda.</p>
+const Versiculo = () => (
+  <div className="versiculo-wrap reveal">
+    <div className="versiculo-line"/>
+    <p className="versiculo-text">{CONFIG.versiculo}</p>
+    <p className="versiculo-ref">{CONFIG.versiculoRef}</p>
+    <div className="versiculo-line" style={{marginTop:'1.5rem'}}/>
+  </div>
+);
+
+const Fiesta = () => (
+  <>
+    <div className="section reveal" style={{paddingBottom:'1rem'}}>
+      <p className="s-tag">✦ &nbsp; ✦</p>
+      <h2 className="s-title">Nuestra Fiesta</h2>
+      <div className="s-divider"><span>🎉</span></div>
+      <p className="s-text">Detalles para tener en cuenta el día de la boda.</p>
+    </div>
+    <div className="fiesta-wrap">
+      <div className="fiesta-grid reveal">
+        <div className="fiesta-item">
+          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Dress Code"/>
+          <div className="fiesta-titulo">Dress Code</div>
+          <div className="fiesta-texto"><strong>MUJERES</strong><br/>{CONFIG.dressMujeres}<br/><br/><strong>HOMBRES</strong><br/>{CONFIG.dressHombres}</div>
         </div>
-        <div className="fiesta-wrap">
-          <div className="fiesta-grid reveal">
-            <div className="fiesta-item">
-              <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Dress Code" />
-              <div className="fiesta-titulo">Dress Code</div>
-              <div className="fiesta-texto"><strong>MUJERES</strong><br />{CONFIG.dressMujeres}<br /><br /><strong>HOMBRES</strong><br />{CONFIG.dressHombres}</div>
+        <div className="fiesta-item">
+          <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/2917/2917988.png" alt="Regalos"/>
+          <div className="fiesta-titulo">Lluvia de Sobres</div>
+          <div className="fiesta-texto">Tu presencia es nuestro mejor regalo. Si deseas obsequiarnos algo, aceptamos sobres con mucho cariño. 💛</div>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
+const Hashtag = () => (
+  <div className="hashtag-wrap reveal">
+    <p className="hashtag-label">Comparte el momento</p>
+    <span className="hashtag">{CONFIG.hashtag}</span>
+    <p className="hashtag-sub">Etiqueta tus fotos y videos para que podamos verlos todos 📸</p>
+  </div>
+);
+
+const Recomendaciones = () => (
+  <>
+    <div className="section reveal">
+      <p className="s-tag">✦ &nbsp; ✦</p>
+      <h2 className="s-title">Recomendaciones</h2>
+      <div className="s-divider"><span>✨</span></div>
+      <p className="s-text">¡Recomendaciones para tener en cuenta el día de la Boda!</p>
+    </div>
+    <div style={{maxWidth:'680px',margin:'0 auto',padding:'0 1.5rem 3.5rem'}} className="reveal">
+      <div className="reco-grid">
+        {CONFIG.recomendaciones.map((r,i)=>(
+          <div key={i} className="reco-card">
+            <img className="reco-icon" src={r.icon} alt={r.titulo}/>
+            <div className="reco-titulo">{r.titulo}</div>
+            <div className="reco-texto">{r.texto}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </>
+);
+
+const Confirmar = () => {
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbxeSDF4udZSzUcd07ucQct_-6O9ob4bTyIcbBb7lvgsyVxVAiMgq88z1eUbEozhZ3UvXg/exec";
+  const [paso,setPaso]=React.useState(1);
+  const [inv,setInv]=React.useState(null);
+  const [form,setForm]=React.useState({asistencia:'Si',personas:'1',mensaje:''});
+  const [st,setSt]=React.useState('idle');
+  React.useEffect(()=>{
+    const p=new URLSearchParams(window.location.search);
+    const n=(p.get('invitado')||'').trim();
+    if(!n) return;
+    fetch(`${SHEET_URL}?action=verificar&nombre=${encodeURIComponent(n)}`)
+      .then(r=>r.json()).then(d=>{
+        if(d.ok){setInv(d);setForm(f=>({...f,personas:'1'}));setPaso(2);}
+        else{setInv({nombre:n,maxPersonas:5,mesa:''});setPaso(2);}
+      }).catch(()=>{setInv({nombre:n,maxPersonas:5,mesa:''});setPaso(2);});
+  },[]);
+  const enviar=async()=>{
+    setSt('loading');
+    try{
+      const b=new FormData();
+      ['action','rsvp','nombre',inv.nombre,'mesa',inv.mesa,'asistencia',form.asistencia,'personas',form.personas,'mensaje',form.mensaje].forEach((_,i,a)=>{ if(i%2===0) b.append(a[i],a[i+1]); });
+      b.set('action','rsvp');
+      await fetch(SHEET_URL,{method:'POST',body:b,mode:'no-cors'});
+      setSt('ok');setPaso(3);
+    }catch{setSt('err');}
+  };
+  const hnd=e=>setForm({...form,[e.target.name]:e.target.value});
+  const opts=inv?Array.from({length:inv.maxPersonas},(_,i)=>i+1):[1];
+  const DS={fontFamily:"'Dancing Script',cursive"};
+  const CG={fontFamily:"'Cormorant Garamond',serif"};
+  return (
+    <div className="rsvp-wrap reveal">
+      <p style={{fontSize:'.58rem',letterSpacing:'.45em',textTransform:'uppercase',color:'var(--coral)',marginBottom:'.5rem'}}>RSVP</p>
+      <div style={{...DS,fontSize:'clamp(2.5rem,9vw,4.5rem)',color:'#fff',marginBottom:'.5rem'}}>Confirmar Asistencia</div>
+      <div style={{display:'inline-block',border:'1px solid var(--orange)',color:'var(--coral)',fontSize:'.6rem',letterSpacing:'.22em',textTransform:'uppercase',padding:'.5rem 1.8rem',borderRadius:'30px',marginBottom:'1.5rem'}}>{CONFIG.fechaLimite}</div>
+      <p style={{...CG,fontStyle:'italic',fontSize:'.95rem',color:'rgba(255,255,255,.6)',lineHeight:1.9,maxWidth:'420px',margin:'0 auto 2.5rem'}}>Para nosotros es muy importante que confirmes tu asistencia antes de la fecha indicada. 💛</p>
+      <div className="rsvp-form">
+        {paso===1&&<div style={{textAlign:'center',padding:'2rem 0',color:'rgba(255,255,255,.5)',fontSize:'.85rem'}}>⏳ Cargando...</div>}
+        {paso===2&&inv&&(
+          <>
+            <div style={{background:'rgba(232,96,28,.1)',border:'1px solid rgba(232,96,28,.3)',borderRadius:'4px',padding:'1.2rem 1.4rem',marginBottom:'1.5rem',textAlign:'center'}}>
+              <div style={{fontSize:'1.58rem',letterSpacing:'.3em',textTransform:'uppercase',color:'var(--coral)',marginBottom:'.4rem'}}>Bienvenido/a</div>
+              <div style={{...DS,fontSize:'2rem',color:'#fff',lineHeight:1.2}}>{inv.nombre}</div>
+              {inv.mesa&&<div style={{fontSize:'1.2rem',color:'rgba(255,255,255,.45)',marginTop:'.4rem',letterSpacing:'.15em'}}>Mesa #{inv.mesa}</div>}
+              <div style={{fontSize:'1.2rem',color:'rgba(255,255,255,.4)',marginTop:'.5rem'}}>Puedes confirmar hasta <strong style={{color:'var(--coral)'}}>{inv.maxPersonas} persona{inv.maxPersonas>1?'s':''}</strong></div>
             </div>
-            <div className="fiesta-item">
-              <img className="fiesta-icon" src="https://cdn-icons-png.flaticon.com/512/2917/2917988.png" alt="Regalos" />
-              <div className="fiesta-titulo">Lluvia de Sobres</div>
-              <div className="fiesta-texto">Tu presencia es nuestro mejor regalo. Si deseas obsequiarnos algo, aceptamos sobres con mucho cariño. 💛</div>
+            <div className="rsvp-field"><label>¿Asistirás a la boda?</label>
+              <select name="asistencia" value={form.asistencia} onChange={hnd}>
+                <option value="Si">✅ Sí, asistiré</option><option value="No">❌ No podré asistir</option>
+              </select>
             </div>
-          </div>
-        </div>
-      </>
-    );
-
-    const Hashtag = () => (
-      <div className="hashtag-wrap reveal">
-        <p className="hashtag-label">Comparte el momento</p>
-        <span className="hashtag">{CONFIG.hashtag}</span>
-        <p className="hashtag-sub">Etiqueta tus fotos y videos para que podamos verlos todos 📸</p>
-      </div>
-    );
-
-    const Recomendaciones = () => (
-      <>
-        <div className="section reveal">
-          <p className="s-tag">✦ &nbsp; ✦</p>
-          <h2 className="s-title">Recomendaciones</h2>
-          <div className="s-divider"><span>✨</span></div>
-          <p className="s-text">¡Recomendaciones para tener en cuenta el día de la Boda!</p>
-        </div>
-        <div style={{ maxWidth: '680px', margin: '0 auto', padding: '0 1.5rem 3.5rem' }} className="reveal">
-          <div className="reco-grid">
-            {CONFIG.recomendaciones.map((r, i) => (
-              <div key={i} className="reco-card">
-                <img className="reco-icon" src={r.icon} alt={r.titulo} />
-                <div className="reco-titulo">{r.titulo}</div>
-                <div className="reco-texto">{r.texto}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </>
-    );
-
-    const Confirmar = () => {
-      const SHEET_URL = "https://script.google.com/macros/s/AKfycbxeSDF4udZSzUcd07ucQct_-6O9ob4bTyIcbBb7lvgsyVxVAiMgq88z1eUbEozhZ3UvXg/exec";
-      const [paso, setPaso] = React.useState(1);
-      const [inv, setInv] = React.useState(null);
-      const [form, setForm] = React.useState({ asistencia: 'Si', personas: '1', mensaje: '' });
-      const [st, setSt] = React.useState('idle');
-      React.useEffect(() => {
-        const p = new URLSearchParams(window.location.search);
-        const n = (p.get('invitado') || '').trim();
-        if (!n) return;
-        fetch(`${SHEET_URL}?action=verificar&nombre=${encodeURIComponent(n)}`)
-          .then(r => r.json()).then(d => {
-            if (d.ok) { setInv(d); setForm(f => ({ ...f, personas: '1' })); setPaso(2); }
-            else { setInv({ nombre: n, maxPersonas: 5, mesa: '' }); setPaso(2); }
-          }).catch(() => { setInv({ nombre: n, maxPersonas: 5, mesa: '' }); setPaso(2); });
-      }, []);
-      const enviar = async () => {
-        setSt('loading');
-        try {
-          const b = new FormData();
-          ['action', 'rsvp', 'nombre', inv.nombre, 'mesa', inv.mesa, 'asistencia', form.asistencia, 'personas', form.personas, 'mensaje', form.mensaje].forEach((_, i, a) => { if (i % 2 === 0) b.append(a[i], a[i + 1]); });
-          b.set('action', 'rsvp');
-          await fetch(SHEET_URL, { method: 'POST', body: b, mode: 'no-cors' });
-          setSt('ok'); setPaso(3);
-        } catch { setSt('err'); }
-      };
-      const hnd = e => setForm({ ...form, [e.target.name]: e.target.value });
-      const opts = inv ? Array.from({ length: inv.maxPersonas }, (_, i) => i + 1) : [1];
-      const DS = { fontFamily: "'Dancing Script',cursive" };
-      const CG = { fontFamily: "'Cormorant Garamond',serif" };
-      return (
-        <div className="rsvp-wrap reveal">
-          <p style={{ fontSize: '.58rem', letterSpacing: '.45em', textTransform: 'uppercase', color: 'var(--coral)', marginBottom: '.5rem' }}>RSVP</p>
-          <div style={{ ...DS, fontSize: 'clamp(2.5rem,9vw,4.5rem)', color: '#fff', marginBottom: '.5rem' }}>Confirmar Asistencia</div>
-          <div style={{ display: 'inline-block', border: '1px solid var(--orange)', color: 'var(--coral)', fontSize: '.6rem', letterSpacing: '.22em', textTransform: 'uppercase', padding: '.5rem 1.8rem', borderRadius: '30px', marginBottom: '1.5rem' }}>{CONFIG.fechaLimite}</div>
-          <p style={{ ...CG, fontStyle: 'italic', fontSize: '.95rem', color: 'rgba(255,255,255,.6)', lineHeight: 1.9, maxWidth: '420px', margin: '0 auto 2.5rem' }}>Para nosotros es muy importante que confirmes tu asistencia antes de la fecha indicada. 💛</p>
-          <div className="rsvp-form">
-            {paso === 1 && <div style={{ textAlign: 'center', padding: '2rem 0', color: 'rgba(255,255,255,.5)', fontSize: '.85rem' }}>⏳ Cargando...</div>}
-            {paso === 2 && inv && (
-              <>
-                <div style={{ background: 'rgba(232,96,28,.1)', border: '1px solid rgba(232,96,28,.3)', borderRadius: '4px', padding: '1.2rem 1.4rem', marginBottom: '1.5rem', textAlign: 'center' }}>
-                  <div style={{ fontSize: '.58rem', letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--coral)', marginBottom: '.4rem' }}>Bienvenido/a</div>
-                  <div style={{ ...DS, fontSize: '2rem', color: '#fff', lineHeight: 1.2 }}>{inv.nombre}</div>
-                  {inv.mesa && <div style={{ fontSize: '.72rem', color: 'rgba(255,255,255,.45)', marginTop: '.4rem', letterSpacing: '.15em' }}>Mesa #{inv.mesa}</div>}
-                  <div style={{ fontSize: '.72rem', color: 'rgba(255,255,255,.4)', marginTop: '.5rem' }}>Puedes confirmar hasta <strong style={{ color: 'var(--coral)' }}>{inv.maxPersonas} persona{inv.maxPersonas > 1 ? 's' : ''}</strong></div>
-                </div>
-                <div className="rsvp-field"><label>¿Asistirás a la boda?</label>
-                  <select name="asistencia" value={form.asistencia} onChange={hnd}>
-                    <option value="Si">✅ Sí, asistiré</option><option value="No">❌ No podré asistir</option>
+            {form.asistencia==='Si'&&(
+              <div style={{display:'flex',justifyContent:'center',marginBottom:'1.3rem'}}>
+                <div className="rsvp-field" style={{width:'500px'}}><label>N° de personas</label>
+                  <select name="personas" value={form.personas} onChange={hnd}>
+                    {opts.map(n=><option key={n} value={n}>{n} persona{n>1?'s':''}</option>)}
                   </select>
                 </div>
-                {form.asistencia === 'Si' && (
-                  <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.3rem' }}>
-                    <div className="rsvp-field" style={{ width: '200px' }}><label>N° de personas</label>
-                      <select name="personas" value={form.personas} onChange={hnd}>
-                        {opts.map(n => <option key={n} value={n}>{n} persona{n > 1 ? 's' : ''}</option>)}
-                      </select>
-                    </div>
-                  </div>
-                )}
-                <div className="rsvp-field"><label>Mensaje para los novios (opcional)</label>
-                  <textarea name="mensaje" value={form.mensaje} onChange={hnd} placeholder="Un mensaje, deseo o nota especial... 💌" />
-                </div>
-                {st === 'err' && <div style={{ display: 'block', background: 'rgba(255,80,80,.1)', border: '1px solid rgba(255,80,80,.3)', color: '#ffaaaa', padding: '1rem', borderRadius: '4px', marginBottom: '1rem', fontSize: '.85rem' }}>😕 Error al enviar. Intenta de nuevo.</div>}
-                <button className="btn-rsvp" onClick={enviar} disabled={st === 'loading'}>{st === 'loading' ? '⏳ Enviando...' : '💌 Confirmar Asistencia'}</button>
-              </>
-            )}
-            {paso === 3 && (
-              <div style={{ textAlign: 'center', padding: '2rem 0' }}>
-                <div style={{ fontSize: '3.5rem', marginBottom: '1rem' }}>🎉</div>
-                <div style={{ ...DS, fontSize: '2.8rem', color: 'var(--coral)', marginBottom: '.8rem' }}>¡Confirmado!</div>
-                <p style={{ ...CG, fontStyle: 'italic', color: 'rgba(255,255,255,.65)', fontSize: '.95rem', lineHeight: 2, maxWidth: '360px', margin: '0 auto' }}>
-                  Gracias <strong style={{ color: 'var(--coral)' }}>{inv?.nombre}</strong>, tu asistencia fue registrada. ¡Nos vemos el día de la boda! 💛
-                </p>
-                {inv?.mesa && <div style={{ marginTop: '1.5rem', display: 'inline-block', border: '1px solid var(--orange)', borderRadius: '30px', padding: '.5rem 2rem', color: 'var(--coral)', fontSize: '.68rem', letterSpacing: '.2em' }}>MESA #{inv.mesa}</div>}
               </div>
             )}
-          </div>
-        </div>
-      );
-    };
-
-    const Footer = () => <footer><p>Con amor · {CONFIG.nombre1} &amp; {CONFIG.nombre2} · 2026</p></footer>;
-
-    const AccesoDenegado = ({ nombre }) => (
-      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'var(--cream)', padding: '2rem', textAlign: 'center' }}>
-        <div style={{ fontSize: '3.5rem', marginBottom: '1.2rem' }}>🌸</div>
-        <div style={{ fontFamily: "'Dancing Script',cursive", fontSize: 'clamp(3rem,12vw,6rem)', color: 'var(--burgundy)', lineHeight: 1.1, marginBottom: '1rem' }}>{CONFIG.nombre1} & {CONFIG.nombre2}</div>
-        <div style={{ width: 120, height: 1, background: 'linear-gradient(90deg,transparent,var(--coral),transparent)', margin: '0 auto 1.8rem' }} />
-        {nombre ? (
-          <>
-            <p style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: 'italic', color: 'var(--gray)', fontSize: '1.05rem', lineHeight: 1.9, maxWidth: 400, marginBottom: '1.5rem' }}>Lo sentimos, <strong style={{ color: 'var(--burgundy)' }}>{nombre}</strong>,<br />tu nombre no se encuentra en la lista de invitados.</p>
-            <p style={{ fontSize: '.72rem', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gray)', maxWidth: 340 }}>Si crees que es un error, por favor contacta a los novios.</p>
-          </>
-        ) : (
-          <>
-            <p style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: 'italic', color: 'var(--gray)', fontSize: '1.05rem', lineHeight: 1.9, maxWidth: 400, marginBottom: '1.5rem' }}>Esta invitación es personal.<br />Accede desde el link que recibiste.</p>
-            <p style={{ fontSize: '.72rem', letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gray)', maxWidth: 340 }}>El link tiene la forma:<br /><span style={{ color: 'var(--orange)', marginTop: '.4rem', display: 'block' }}>tu-url.com?invitado=TuNombre</span></p>
+            <div className="rsvp-field"><label>Mensaje para los novios (opcional)</label>
+              <textarea name="mensaje" value={form.mensaje} onChange={hnd} placeholder="Un mensaje, deseo o nota especial... 💌"/>
+            </div>
+            {st==='err'&&<div style={{display:'block',background:'rgba(255,80,80,.1)',border:'1px solid rgba(255,80,80,.3)',color:'#ffaaaa',padding:'1rem',borderRadius:'4px',marginBottom:'1rem',fontSize:'.85rem'}}>😕 Error al enviar. Intenta de nuevo.</div>}
+            <button className="btn-rsvp" onClick={enviar} disabled={st==='loading'}>{st==='loading'?'⏳ Enviando...':'💌 Confirmar Asistencia'}</button>
           </>
         )}
+        {paso===3&&(
+          <div style={{textAlign:'center',padding:'2rem 0'}}>
+            <div style={{fontSize:'3.5rem',marginBottom:'1rem'}}>🎉</div>
+            <div style={{...DS,fontSize:'2.8rem',color:'var(--coral)',marginBottom:'.8rem'}}>¡Confirmado!</div>
+            <p style={{...CG,fontStyle:'italic',color:'rgba(255,255,255,.65)',fontSize:'.95rem',lineHeight:2,maxWidth:'360px',margin:'0 auto'}}>
+              Gracias <strong style={{color:'var(--coral)'}}>{inv?.nombre}</strong>, tu asistencia fue registrada. ¡Nos vemos el día de la boda! 💛
+            </p>
+            {inv?.mesa&&<div style={{marginTop:'1.5rem',display:'inline-block',border:'1px solid var(--orange)',borderRadius:'30px',padding:'.5rem 2rem',color:'var(--coral)',fontSize:'.68rem',letterSpacing:'.2em'}}>MESA #{inv.mesa}</div>}
+          </div>
+        )}
       </div>
-    );
+    </div>
+  );
+};
 
-    const Cargando = () => (
-      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'var(--cream)', textAlign: 'center', padding: '2rem' }}>
-        <div style={{ fontFamily: "'Dancing Script',cursive", fontSize: 'clamp(3rem,12vw,6rem)', color: 'var(--burgundy)', marginBottom: '1.5rem' }}>{CONFIG.nombre1} & {CONFIG.nombre2}</div>
-        <div style={{ width: 40, height: 40, border: '3px solid rgba(107,45,78,.15)', borderTop: '3px solid var(--orange)', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto' }} />
-        <p style={{ marginTop: '1.2rem', fontSize: '.62rem', letterSpacing: '.3em', textTransform: 'uppercase', color: 'var(--gray)' }}>Verificando invitación...</p>
-        <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+const Footer = () => <footer><p>Con amor · {CONFIG.nombre1} &amp; {CONFIG.nombre2} · 2026</p></footer>;
+
+const AccesoDenegado = ({nombre}) => (
+  <div style={{minHeight:'100vh',background:'var(--cream)',position:'relative',overflow:'hidden',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',padding:'3rem 1.5rem',textAlign:'center'}}>
+
+    {/* Corner botanicals reutilizando el mismo componente */}
+    <FloralCorner className="tl" />
+    <FloralCorner className="tr" />
+    <FloralCorner className="bl" />
+    <FloralCorner className="br" />
+
+    {/* Etiqueta superior */}
+    <p style={{fontFamily:"'Jost',sans-serif",fontSize:'.58rem',letterSpacing:'.5em',textTransform:'uppercase',color:'var(--green)',marginBottom:'1.2rem',animation:'fadeUp .7s ease both'}}>
+      Con la bendición de Dios y nuestras familias
+    </p>
+
+    {/* Nombres grandes */}
+    <div style={{fontFamily:"'Dancing Script',cursive",fontSize:'clamp(3.5rem,14vw,7rem)',color:'var(--burgundy)',lineHeight:1,marginBottom:'.4rem',animation:'fadeUp .8s .1s ease both'}}>
+      {CONFIG.nombre1} & {CONFIG.nombre2}
+    </div>
+
+    {/* Línea decorativa con flor */}
+    <div style={{display:'flex',alignItems:'center',justifyContent:'center',gap:'.8rem',margin:'.8rem auto 1.5rem',animation:'fadeUp .8s .2s ease both'}}>
+      <div style={{width:60,height:1,background:'linear-gradient(90deg,transparent,var(--coral))'}}/>
+      <span style={{color:'var(--orange)',fontSize:'1.1rem'}}>🌸</span>
+      <div style={{width:60,height:1,background:'linear-gradient(270deg,transparent,var(--coral))'}}/>
+    </div>
+
+    {/* Foto de los novios */}
+    <div style={{position:'relative',marginBottom:'1.8rem',animation:'fadeUp .85s .3s ease both'}}>
+      <div style={{width:'min(280px, 70vw)',height:'min(280px, 70vw)',borderRadius:'50%',overflow:'hidden',border:'5px solid #fff',outline:'2px solid rgba(107,45,78,.2)',boxShadow:'0 12px 50px rgba(107,45,78,.18)',margin:'0 auto'}}>
+        <img src={CONFIG.fotoPareja} alt={`${CONFIG.nombre1} y ${CONFIG.nombre2}`} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'top'}}/>
       </div>
-    );
+      {/* Pequeños acentos florales alrededor del círculo */}
+      <div style={{position:'absolute',top:-10,right:-10,fontSize:'1.6rem',transform:'rotate(20deg)'}}>🌺</div>
+      <div style={{position:'absolute',bottom:-8,left:-8,fontSize:'1.4rem',transform:'rotate(-15deg)'}}>🌿</div>
+      <div style={{position:'absolute',top:10,left:-14,fontSize:'1.2rem',transform:'rotate(-30deg)'}}>🌸</div>
+      <div style={{position:'absolute',bottom:10,right:-12,fontSize:'1.2rem',transform:'rotate(25deg)'}}>🌼</div>
+    </div>
 
-    const App = () => {
-      const SHEET_URL = "https://script.google.com/macros/s/AKfycbxeSDF4udZSzUcd07ucQct_-6O9ob4bTyIcbBb7lvgsyVxVAiMgq88z1eUbEozhZ3UvXg/exec";
-      const [acc, setAcc] = React.useState('loading');
-      const [nUrl, setNUrl] = React.useState('');
-      React.useEffect(() => {
-        const p = new URLSearchParams(window.location.search);
-        const inv = (p.get('invitado') || '').trim();
-        if (!inv) { setAcc('no-param'); return; }
-        setNUrl(inv);
-        const sT = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
-        fetch(`${SHEET_URL}?action=verificarNombre&nombre=${encodeURIComponent(sT(inv))}`)
-          .then(r => r.json()).then(d => {
-            if (d.ok === true) { setAcc('ok'); return; }
-            if (d.ok === false) { setAcc('denied'); return; }
-            setAcc('ok');
-          }).catch(() => setAcc('ok'));
-      }, []);
-      React.useEffect(() => {
-        if (acc !== 'ok') return;
-        const obs = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }); }, { threshold: .1 });
-        setTimeout(() => document.querySelectorAll('.reveal').forEach(el => obs.observe(el)), 100);
-        return () => obs.disconnect();
-      }, [acc]);
-      if (acc === 'loading') return <Cargando />;
-      if (acc === 'no-param') return <AccesoDenegado nombre={null} />;
-      if (acc === 'denied') return <AccesoDenegado nombre={nUrl} />;
-      return (
+    {/* Fecha */}
+    <p style={{fontFamily:"'Cormorant Garamond',serif",fontSize:'clamp(1rem,2.5vw,1.15rem)',color:'var(--burgundy)',letterSpacing:'.1em',marginBottom:'1.6rem',animation:'fadeUp .85s .4s ease both'}}>
+      {CONFIG.fechaTexto} · {CONFIG.ciudad}
+    </p>
+
+    {/* Mensaje según el caso */}
+    <div style={{animation:'fadeUp .85s .5s ease both',maxWidth:420}}>
+      {nombre ? (
         <>
-          <Hero /><Countdown /><Mensaje /><GoldLine /><FotoPareja /><GoldLine />
-          <Itinerario /><GoldLine /><Lugares /><GoldLine /><Galeria /><Versiculo />
-          <Fiesta /><Hashtag /><Recomendaciones /><GoldLine /><Confirmar /><Footer />
+          <p style={{fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',color:'var(--gray)',fontSize:'1.05rem',lineHeight:1.9,marginBottom:'1rem'}}>
+            Lo sentimos, <strong style={{color:'var(--burgundy)'}}>{nombre}</strong>,<br/>
+            tu nombre no se encuentra en nuestra lista de invitados.
+          </p>
+          <p style={{fontFamily:"'Jost',sans-serif",fontSize:'.65rem',letterSpacing:'.18em',textTransform:'uppercase',color:'var(--coral)',lineHeight:1.8}}>
+            Si crees que es un error,<br/>por favor contacta a los novios 💛
+          </p>
         </>
-      );
-    };
+      ) : (
+        <>
+          <p style={{fontFamily:"'Cormorant Garamond',serif",fontStyle:'italic',color:'var(--gray)',fontSize:'1.05rem',lineHeight:1.9,marginBottom:'1rem'}}>
+            Esta invitación es personal y fue enviada<br/>directamente a cada uno de nuestros invitados.
+          </p>
+          <p style={{fontFamily:"'Jost',sans-serif",fontSize:'.65rem',letterSpacing:'.18em',textTransform:'uppercase',color:'var(--coral)',lineHeight:1.8}}>
+            Accede desde el link que recibiste 💌
+          </p>
+        </>
+      )}
+    </div>
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-  </script>
+    {/* Pie */}
+    <p style={{marginTop:'2.5rem',fontFamily:"'Jost',sans-serif",fontSize:'.55rem',letterSpacing:'.3em',textTransform:'uppercase',color:'rgba(107,45,78,.3)',animation:'fadeUp .85s .6s ease both'}}>
+      Con amor · {CONFIG.nombre1} &amp; {CONFIG.nombre2} · 2026
+    </p>
+  </div>
+);
+
+const Cargando = () => (
+  <div style={{minHeight:'100vh',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',background:'var(--cream)',textAlign:'center',padding:'2rem'}}>
+    <div style={{fontFamily:"'Dancing Script',cursive",fontSize:'clamp(3rem,12vw,6rem)',color:'var(--burgundy)',marginBottom:'1.5rem'}}>{CONFIG.nombre1} & {CONFIG.nombre2}</div>
+    <div style={{width:40,height:40,border:'3px solid rgba(107,45,78,.15)',borderTop:'3px solid var(--orange)',borderRadius:'50%',animation:'spin 1s linear infinite',margin:'0 auto'}}/>
+    <p style={{marginTop:'1.2rem',fontSize:'.62rem',letterSpacing:'.3em',textTransform:'uppercase',color:'var(--gray)'}}>Verificando invitación...</p>
+    <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+  </div>
+);
+
+const App = () => {
+  const SHEET_URL = "https://script.google.com/macros/s/AKfycbxeSDF4udZSzUcd07ucQct_-6O9ob4bTyIcbBb7lvgsyVxVAiMgq88z1eUbEozhZ3UvXg/exec";
+  const [acc,setAcc]=React.useState('loading');
+  const [nUrl,setNUrl]=React.useState('');
+  React.useEffect(()=>{
+    const p=new URLSearchParams(window.location.search);
+    const inv=(p.get('invitado')||'').trim();
+    if(!inv){setAcc('no-param');return;}
+    setNUrl(inv);
+    const sT=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+    fetch(`${SHEET_URL}?action=verificarNombre&nombre=${encodeURIComponent(sT(inv))}`)
+      .then(r=>r.json()).then(d=>{
+        if(d.ok===true){setAcc('ok');return;}
+        if(d.ok===false){setAcc('denied');return;}
+        setAcc('ok');
+      }).catch(()=>setAcc('ok'));
+  },[]);
+  React.useEffect(()=>{
+    if(acc!=='ok') return;
+    const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.1});
+    setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>obs.observe(el)),100);
+    return ()=>obs.disconnect();
+  },[acc]);
+  if(acc==='loading') return <Cargando/>;
+  if(acc==='no-param') return <AccesoDenegado nombre={null}/>;
+  if(acc==='denied') return <AccesoDenegado nombre={nUrl}/>;
+  return (
+    <>
+      <Hero/><Countdown/><Mensaje/><GoldLine/><FotoPareja/><GoldLine/>
+      <Itinerario/><GoldLine/><Lugares/><GoldLine/><Galeria/><Versiculo/>
+      <Fiesta/><Hashtag/><Recomendaciones/><GoldLine/><Confirmar/><Footer/>
+    </>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
 </body>
-
 </html>
